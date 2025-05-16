@@ -284,7 +284,7 @@ export function SimpleGlobe() {
     >
       <canvas ref={canvasRef} className="w-[500px] h-[500px]"></canvas>
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full bg-[#0253E4]/70 blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] rounded-full bg-[#0253E4]/70 blur-3xl"></div>
       </div>
     </motion.div>
   )

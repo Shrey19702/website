@@ -7,13 +7,13 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle, Shield, AlertTriangle, Eye, Linkedin } from "lucide-react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import anime from "animejs/lib/anime.es.js"
-import { CrypticText } from "@/components/cryptic-text"
+// import { CrypticText } from "@/components/cryptic-text"
 import { SimpleGlobe } from "@/components/simple-globe"
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null)
   const isHeroInView = useInView(heroRef, { once: false })
-  const [scrollY, setScrollY] = useState(0)
+  // const [scrollY, setScrollY] = useState(0)
 
   // For the flowing line animation
   const lineRef = useRef<HTMLDivElement>(null)
@@ -79,14 +79,14 @@ export default function Home() {
   )
 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setScrollY(window.scrollY)
+  //   }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  //   window.addEventListener("scroll", handleScroll)
+  //   return () => window.removeEventListener("scroll", handleScroll)
+  // }, [])
 
   useEffect(() => {
     if (lineRef.current) {
@@ -182,7 +182,7 @@ export default function Home() {
           </motion.span>
         </div>
         <div className="flex items-center gap-6">
-          <Link
+          {/* <Link
             href="#"
             className="text-sm text-black hover:text-[#0253E4] transition-colors font-outfit relative group"
           >
@@ -195,16 +195,21 @@ export default function Home() {
           >
             Terms & Conditions
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0253E4] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Button className="bg-[#0253E4] hover:bg-[#0253E4]/90 text-white rounded-full px-6 relative overflow-hidden group">
-            <span className="relative z-10">Book a Demo</span>
+          </Link> */}
+          <Button className="bg-[#0253E4] hover:bg-[#0253E4]/90 text-white rounded-full px-6 py-4 text-lg relative overflow-hidden group">
+            <span className="relative z-10 flex items-center">
+              Book a Demo
+              <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </motion.span>
+            </span>
             <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
           </Button>
         </div>
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 relative" ref={heroRef}>
+      <section className="container mx-auto px-4 pb-20 relative" ref={heroRef}>
         {/* Decorative elements */}
         <div className="absolute top-1/4 left-10 w-24 h-24 rounded-full bg-[#0253E4]/5 floating-circle"></div>
         <div className="absolute bottom-1/4 right-10 w-16 h-16 rounded-full bg-[#0253E4]/10 floating-circle"></div>
@@ -217,11 +222,14 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="relative z-10"
           >
-            <CrypticText
+            <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-outfit leading-tight" >
+              Safeguarding Digital Truth in an AI World
+            </div>
+            {/* <CrypticText
               text="Safeguarding Digital Truth in an AI World"
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-outfit leading-tight"
               revealDuration={1.5}
-            />
+            /> */}
             <motion.p
               className="text-lg mb-8 text-gray-700 font-outfit max-w-xl"
               initial={{ opacity: 0 }}
@@ -661,7 +669,7 @@ export default function Home() {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               className="card-hover h-40 bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-[#0253E4]/10 flex items-center justify-center group hover:border-[#0253E4]/40 transition-all"
             >
-              <Image className="" width={300} height={300} alt="" src={`/customers/${partner.image}`} />
+              <Image className=" z-10 " width={300} height={300} alt="" src={`/customers/${partner.image}`} />
               {/* <span className="text-xl font-semibold text-gray-800 font-outfit group-hover:text-[#0253E4] transition-colors">
                 {partner.name}
               </span> */}
