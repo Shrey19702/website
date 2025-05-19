@@ -165,7 +165,6 @@ const sampleData = [
         color: "#0000ff",
         type: "media"
     },
-    // Malicious transfers (red)
     {
         order: 6,
         startLat: 22.3193,
@@ -287,7 +286,7 @@ export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
             .showAtmosphere(defaultProps.showAtmosphere)
             .atmosphereColor(defaultProps.atmosphereColor)
             .atmosphereAltitude(defaultProps.atmosphereAltitude)
-            .hexPolygonColor(() => "rgba(2, 83, 228, 1)"); // Landmasses remain blue
+            .hexPolygonColor(() => "rgba(10, 83, 228, 1)"); // Landmasses remain blue
 
         globeRef.current
             .arcsData(data)
@@ -354,7 +353,7 @@ export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
             const newNumbersOfRings = genRandomNumbers(
                 0,
                 data.length,
-                Math.floor((data.length * 4) / 5),
+                Math.floor((data.length * 1) / 5),
             );
 
             const ringsData = data
@@ -389,7 +388,11 @@ export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
                             key={index}
                             arcData={arc}
                             globeRef={globeRef}
-                            animationTime={defaultProps.arcTime}
+                            arcDashAnimateTime={defaultProps.arcTime}
+                            arcDashLength={defaultProps.arcLength}
+                            arcDashInitialGap={0.2}
+                            arcDashGap={0.8}
+                            globeRadius={100}
                         />
                     ))}
                 </>
@@ -490,7 +493,7 @@ export function ContentGlobe() {
         emissive: "#ffffff",        // Target: White emissive glow for the globe itself
         emissiveIntensity: 0.4,     // Intensity of the white glow
         shininess: 0.9,              // A more standard shininess value
-        arcTime: 2000,
+        arcTime: 5000,
         arcLength: 0.9,
         rings: 1,
         maxRings: 3,
@@ -503,7 +506,7 @@ export function ContentGlobe() {
     };
 
     return (
-        <div className="w-full h-[500px]">
+        <div className="w-[600px] h-[500px]">
             <World globeConfig={globeConfig} data={sampleData} />
         </div>
     );

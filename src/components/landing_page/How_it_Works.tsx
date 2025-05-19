@@ -5,66 +5,66 @@ import { useRef, useEffect, useState } from "react"
 
 const How_It_Works = () => {
 
-      const stickyContainerRef = useRef<HTMLDivElement>(null)
-      const { scrollYProgress } = useScroll({
+    const stickyContainerRef = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
         target: stickyContainerRef,
         offset: ["start start", "end end"], // Keep this as is for now
-      })
-    
-      // New approach for section transitions
-      // Each section will get a total of 0.25 of scrollYProgress
-      // We'll use a small portion of that (e.g., 0.05) for the transition itself.
-      const transitionPoint = 0.05; // How much of the 0.25 progress is used for fade/slide
-    
-      // Section 1
-      const section1Opacity = useTransform(
+    })
+
+    // New approach for section transitions
+    // Each section will get a total of 0.25 of scrollYProgress
+    // We'll use a small portion of that (e.g., 0.05) for the transition itself.
+    const transitionPoint = 0.05; // How much of the 0.25 progress is used for fade/slide
+
+    // Section 1
+    const section1Opacity = useTransform(
         scrollYProgress,
         [0, 0.25 - transitionPoint, 0.25], // Appears, stays, fades out
         [1, 1, 0]
-      )
-      const section1Y = useTransform(
+    )
+    const section1Y = useTransform(
         scrollYProgress,
         [0, 0.25 - transitionPoint, 0.25],
         [0, 0, -50] // Stays, then moves up on fade
-      )
-    
-      // Section 2
-      const section2Opacity = useTransform(
+    )
+
+    // Section 2
+    const section2Opacity = useTransform(
         scrollYProgress,
         // Starts fading in as section 1 fades out, fully visible, then fades out
         [0.25 - transitionPoint, 0.25, 0.5 - transitionPoint, 0.5],
         [0, 1, 1, 0]
-      )
-      const section2Y = useTransform(
+    )
+    const section2Y = useTransform(
         scrollYProgress,
         [0.25 - transitionPoint, 0.25, 0.5 - transitionPoint, 0.5],
         [50, 0, 0, -50] // Moves in from bottom, stays, then moves up on fade
-      )
-    
-      // Section 3
-      const section3Opacity = useTransform(
+    )
+
+    // Section 3
+    const section3Opacity = useTransform(
         scrollYProgress,
         [0.5 - transitionPoint, 0.5, 0.75 - transitionPoint, 0.75],
         [0, 1, 1, 0]
-      )
-      const section3Y = useTransform(
+    )
+    const section3Y = useTransform(
         scrollYProgress,
         [0.5 - transitionPoint, 0.5, 0.75 - transitionPoint, 0.75],
         [50, 0, 0, -50]
-      )
-    
-      // Section 4
-      const section4Opacity = useTransform(
+    )
+
+    // Section 4
+    const section4Opacity = useTransform(
         scrollYProgress,
         [0.75 - transitionPoint, 0.75, 1 - transitionPoint, 1],
         [0, 1, 1, 0] // For the last section, it can just fade out or stay
-      )
-      const section4Y = useTransform(
+    )
+    const section4Y = useTransform(
         scrollYProgress,
         [0.75 - transitionPoint, 0.75, 1 - transitionPoint, 1],
         [50, 0, 0, 0] // Moves in from bottom and stays
-      )
-    
+    )
+
 
     return (
         <div className="relative" ref={stickyContainerRef}>
@@ -101,17 +101,93 @@ const How_It_Works = () => {
                                 className="absolute inset-0" // Each text block is absolute
                                 style={{ opacity: section1Opacity, y: section1Y }}
                             >
-                                <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-[#0253E4]/10">
+                                <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow shadow-primary">
                                     <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
                                         1
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 font-outfit">Content Ingestion</h3>
-                                    <p className="text-gray-600 font-outfit text-sm md:text-base">
+                                    <div className="flex items-end gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
+                                        </svg>
+                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Content Ingestion</h3>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Section 2 Text */}
+                            <motion.div
+                                className="absolute inset-0"
+                                style={{ opacity: section2Opacity, y: section2Y }}
+                            >
+                                <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow shadow-primary">
+                                    <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
+                                        2
+                                    </div>
+                                    <div className="flex items-end gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
+                                        </svg>
+
+                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Multi-layer Analysis</h3>
+                                    </div>
+
+                                </div>
+                            </motion.div>
+
+                            {/* Section 3 Text */}
+                            <motion.div
+                                className="absolute inset-0"
+                                style={{ opacity: section3Opacity, y: section3Y }}
+                            >
+                                <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow shadow-primary">
+                                    <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
+                                        3
+                                    </div>
+                                    <div className="flex items-end gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                                        </svg>
+
+                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Threat Detection</h3>
+                                    </div>
+
+                                </div>
+                            </motion.div>
+
+                            {/* Section 4 Text */}
+                            <motion.div
+                                className="absolute inset-0"
+                                style={{ opacity: section4Opacity, y: section4Y }}
+                            >
+                                <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-3xl shadow shadow-primary">
+                                    <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
+                                        4
+                                    </div>
+
+                                    <div className="flex items-end gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
+                                        </svg>
+
+                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Actionable Insights</h3>
+                                    </div>
+
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Right side - Changing Visuals (Opacity matches text) */}
+                        {/* This also needs to be a container for absolute positioned visuals */}
+                        <div className="relative h-full hidden md:block"> {/* Hide on small screens if too cluttered, or adjust layout */}
+                            {/* 1 */}
+                            <motion.div className="absolute inset-0" style={{ opacity: section1Opacity }}> {/* No Y transform, just fade */}
+                                <div className="relative rounded-3xl overflow-hidden p-5 py-8 shadow shadow-primary aspect-[16/10]">
+                                    <p className=" py-4 font-outfit text-base">
                                         Our system processes videos, audio, images, and text from any source or format. The advanced
                                         ingestion pipeline handles multiple file types and can extract content from various platforms
                                         including social media, news sites, and direct uploads.
                                     </p>
-                                    <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-sm md:text-base">
+                                    <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-lg ">
                                         <li className="flex items-center gap-2 text-gray-700">
                                             <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#0253E4]" />
                                             <span>Support for all media formats</span>
@@ -127,23 +203,15 @@ const How_It_Works = () => {
                                     </ul>
                                 </div>
                             </motion.div>
-
-                            {/* Section 2 Text */}
-                            <motion.div
-                                className="absolute inset-0"
-                                style={{ opacity: section2Opacity, y: section2Y }}
-                            >
-                                <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-[#0253E4]/10">
-                                    <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
-                                        2
-                                    </div>
-                                    <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 font-outfit">Multi-layer Analysis</h3>
-                                    <p className="text-gray-600 font-outfit text-sm md:text-base">
+                            {/* 2 */}
+                            <motion.div className="absolute inset-0" style={{ opacity: section2Opacity }}>
+                                <div className="relative rounded-3xl overflow-hidden p-5 py-8 shadow shadow-primary aspect-[16/10]">
+                                    <p className=" py-4 font-outfit text-base">
                                         Advanced AI models examine content for manipulation, factual accuracy, and harmful elements. Our
                                         proprietary algorithms analyze visual, audio, and textual components simultaneously to provide
                                         comprehensive assessment.
                                     </p>
-                                    <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-sm md:text-base">
+                                    <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-lg ">
                                         <li className="flex items-center gap-2 text-gray-700">
                                             <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#0253E4]" />
                                             <span>Visual manipulation detection</span>
@@ -159,22 +227,14 @@ const How_It_Works = () => {
                                     </ul>
                                 </div>
                             </motion.div>
-
-                            {/* Section 3 Text */}
-                            <motion.div
-                                className="absolute inset-0"
-                                style={{ opacity: section3Opacity, y: section3Y }}
-                            >
-                                <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-[#0253E4]/10">
-                                    <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
-                                        3
-                                    </div>
-                                    <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 font-outfit">Threat Detection</h3>
-                                    <p className="text-gray-600 font-outfit text-sm md:text-base">
+                            {/* 3 */}
+                            <motion.div className="absolute inset-0" style={{ opacity: section3Opacity }}>
+                                <div className="relative rounded-3xl overflow-hidden p-5 py-8 shadow shadow-primary aspect-[16/10]">
+                                    <p className=" py-4 font-outfit text-base">
                                         Precise identification of deepfakes, misinformation, and policy violations. Our system categorizes
                                         threats and assigns confidence scores to help prioritize response actions.
                                     </p>
-                                    <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-sm md:text-base">
+                                    <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-lg ">
                                         <li className="flex items-center gap-2 text-gray-700">
                                             <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#0253E4]" />
                                             <span>Deepfake detection with 99.7% accuracy</span>
@@ -190,23 +250,15 @@ const How_It_Works = () => {
                                     </ul>
                                 </div>
                             </motion.div>
-
-                            {/* Section 4 Text */}
-                            <motion.div
-                                className="absolute inset-0"
-                                style={{ opacity: section4Opacity, y: section4Y }}
-                            >
-                                <div className="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-[#0253E4]/10">
-                                    <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
-                                        4
-                                    </div>
-                                    <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 font-outfit">Actionable Insights</h3>
-                                    <p className="text-gray-600 font-outfit text-sm md:text-base">
+                            {/* 4 */}
+                            <motion.div className="absolute inset-0" style={{ opacity: section4Opacity }}>
+                                <div className="relative rounded-3xl overflow-hidden p-5 py-8 shadow shadow-primary aspect-[16/10]">
+                                    <p className=" py-4 font-outfit text-base">
                                         Detailed reports with confidence scores and recommended actions. Our dashboard provides
                                         comprehensive analytics and visualization tools to help understand patterns and make informed
                                         decisions.
                                     </p>
-                                    <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-sm md:text-base">
+                                    <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-lg ">
                                         <li className="flex items-center gap-2 text-gray-700">
                                             <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-[#0253E4]" />
                                             <span>Detailed threat assessment reports</span>
@@ -220,89 +272,6 @@ const How_It_Works = () => {
                                             <span>Integration with content moderation systems</span>
                                         </li>
                                     </ul>
-                                </div>
-                            </motion.div>
-                        </div>
-
-                        {/* Right side - Changing Visuals (Opacity matches text) */}
-                        {/* This also needs to be a container for absolute positioned visuals */}
-                        <div className="relative h-full hidden md:block"> {/* Hide on small screens if too cluttered, or adjust layout */}
-                            <motion.div className="absolute inset-0" style={{ opacity: section1Opacity }}> {/* No Y transform, just fade */}
-                                <div className="relative rounded-xl overflow-hidden shadow-xl border border-[#0253E4]/20 aspect-[16/10]">
-                                    <img
-                                        src="/placeholder.svg?height=300&width=500&text=Ingestion+Visual"
-                                        alt="Content Ingestion"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex flex-col justify-end p-4 md:p-6">
-                                        <span className="text-white font-outfit font-semibold text-lg md:text-xl">Content Ingestion</span>
-                                        <span className="text-white/80 font-outfit text-xs md:text-sm">Processing multiple content formats</span>
-                                    </div>
-                                </div>
-                                <div className="mt-4 md:mt-6 bg-white/80 backdrop-blur-sm p-3 md:p-4 rounded-xl border border-[#0253E4]/10">
-                                    <p className="text-gray-700 font-outfit text-xs md:text-sm">
-                                        Our advanced content ingestion pipeline handles over 50 different file formats and can process up
-                                        to 10,000 media items per minute.
-                                    </p>
-                                </div>
-                            </motion.div>
-
-                            <motion.div className="absolute inset-0" style={{ opacity: section2Opacity }}>
-                                <div className="relative rounded-xl overflow-hidden shadow-xl border border-[#0253E4]/20 aspect-[16/10]">
-                                    <img
-                                        src="/placeholder.svg?height=300&width=500&text=Analysis+Visual"
-                                        alt="Multi-layer Analysis"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex flex-col justify-end p-4 md:p-6">
-                                        <span className="text-white font-outfit font-semibold text-lg md:text-xl">Multi-layer Analysis</span>
-                                        <span className="text-white/80 font-outfit text-xs md:text-sm">AI models examining content</span>
-                                    </div>
-                                </div>
-                                <div className="mt-4 md:mt-6 bg-white/80 backdrop-blur-sm p-3 md:p-4 rounded-xl border border-[#0253E4]/10">
-                                    <p className="text-gray-700 font-outfit text-xs md:text-sm">
-                                        Proprietary neural networks analyze 200+ signals across visual, audio, and text for comprehensive manipulation detection.
-                                    </p>
-                                </div>
-                            </motion.div>
-
-                            <motion.div className="absolute inset-0" style={{ opacity: section3Opacity }}>
-                                <div className="relative rounded-xl overflow-hidden shadow-xl border border-[#0253E4]/20 aspect-[16/10]">
-                                    <img
-                                        src="/placeholder.svg?height=300&width=500&text=Threat+Visual"
-                                        alt="Threat Detection"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex flex-col justify-end p-4 md:p-6">
-                                        <span className="text-white font-outfit font-semibold text-lg md:text-xl">Threat Detection</span>
-                                        <span className="text-white/80 font-outfit text-xs md:text-sm">
-                                            Identifying deepfakes and misinformation
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="mt-4 md:mt-6 bg-white/80 backdrop-blur-sm p-3 md:p-4 rounded-xl border border-[#0253E4]/10">
-                                    <p className="text-gray-700 font-outfit text-xs md:text-sm">
-                                        Categorizes content into 15 risk types with confidence scores to prioritize moderation effectively.
-                                    </p>
-                                </div>
-                            </motion.div>
-
-                            <motion.div className="absolute inset-0" style={{ opacity: section4Opacity }}>
-                                <div className="relative rounded-xl overflow-hidden shadow-xl border border-[#0253E4]/20 aspect-[16/10]">
-                                    <img
-                                        src="/placeholder.svg?height=300&width=500&text=Insights+Visual"
-                                        alt="Actionable Insights"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex flex-col justify-end p-4 md:p-6">
-                                        <span className="text-white font-outfit font-semibold text-lg md:text-xl">Actionable Insights</span>
-                                        <span className="text-white/80 font-outfit text-xs md:text-sm">Detailed reports and recommendations</span>
-                                    </div>
-                                </div>
-                                <div className="mt-4 md:mt-6 bg-white/80 backdrop-blur-sm p-3 md:p-4 rounded-xl border border-[#0253E4]/10">
-                                    <p className="text-gray-700 font-outfit text-xs md:text-sm">
-                                        Dashboard offers real-time analytics, trend analysis, and automated response suggestions for existing workflows.
-                                    </p>
                                 </div>
                             </motion.div>
                         </div>

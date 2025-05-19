@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion"
 
 const Trusted_By = () => {
     return (
-        <section className="container mx-auto px-4 py-20 bg-[#0253E4]/5 rounded-3xl relative overflow-hidden">
+        <section className="container mx-auto px-4 py-20 bg-primary/5 rounded-3xl relative overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-[#0253E4]/10 -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-[#0253E4]/10 translate-y-1/2 -translate-x-1/2"></div>
@@ -31,7 +31,7 @@ const Trusted_By = () => {
             </div>
 
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto relative z-10"
+                className="flex flex-wrap gap-8 items-center justify-center mx-auto relative z-10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -41,7 +41,6 @@ const Trusted_By = () => {
                     { name: "BOOM", image: "boom.png" },
                     { name: "DeepfakeAnalysisUnit", image: "dau.png" },
                     { name: "The Quint", image: "quint.png" },
-                    { name: "vishwas news", image: "vishwas.png" }
                 ].map((partner, index) => (
                     <motion.div
                         key={index}
@@ -49,12 +48,10 @@ const Trusted_By = () => {
                             boxShadow: "0 10px 25px -5px rgba(2, 83, 228, 0.1), 0 8px 10px -6px rgba(2, 83, 228, 0.1)",
                         }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="card-hover h-40 bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-[#0253E4]/10 flex items-center justify-center group hover:border-[#0253E4]/40 transition-all"
+                        className="card-hover h-40 bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-sm border border-primary/10 flex items-center justify-center group hover:border-primary/40 transition-all"
                     >
-                        <Image className=" z-10 " width={300} height={300} alt="" src={`/customers/${partner.image}`} />
-                        {/* <span className="text-xl font-semibold text-gray-800 font-outfit group-hover:text-[#0253E4] transition-colors">
-                {partner.name}
-              </span> */}
+                        <Image className=" grayscale " width={300} height={300} alt="" src={`/customers/${partner.image}`} />
+
                     </motion.div>
                 ))}
             </motion.div>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { color, motion } from "framer-motion"
 import { ArrowRight, CheckCircle, Shield, AlertTriangle, Eye, Linkedin } from "lucide-react"
 
 const Services_Section = () => {
@@ -44,7 +44,7 @@ const Services_Section = () => {
                         icon: <AlertTriangle className="h-10 w-10 text-[#0253E4]" />,
                         title: "Misinformation Analysis",
                         description: "Detect false claims and misleading content across social media platforms",
-                        gif: "/placeholder.svg?height=200&width=300",
+                        gif: "/features/analyze.svg",
                     },
                     {
                         icon: <Shield className="h-10 w-10 text-[#0253E4]" />,
@@ -55,13 +55,13 @@ const Services_Section = () => {
                 ].map((service, index) => (
                     <motion.div
                         key={index}
-                        className="card-hover bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-[#0253E4]/10 hover:border-[#0253E4]/30 transition-all hover:shadow-md relative"
+                        className="card-hover bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-[#0253E4]/10 hover:border-[#0253E4]/30 transition-all hover:shadow-md relative"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
-                        <div className="mb-5 p-3 bg-[#0253E4]/10 inline-block rounded-xl group-hover:bg-[#0253E4]/20 transition-colors">
+                        <div className="mb-5 p-3 bg-[#0253E4]/10 inline-block rounded-full group-hover:bg-[#0253E4]/20 transition-colors">
                             {service.icon}
                         </div>
                         <h3 className="text-xl font-semibold mb-3 font-outfit">{service.title}</h3>

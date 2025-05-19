@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle, Shield, AlertTriangle, Eye, Linkedin } from "lucide-react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import DemoButton from "../demo_button"
 
 const CTA_Section = ()=>{
     return (
@@ -52,16 +53,9 @@ const CTA_Section = ()=>{
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex justify-center"
           >
-            <Button className="bg-white text-[#0253E4] hover:bg-white/90 rounded-full px-8 py-6 text-lg font-medium relative z-10 group">
-              <span className="relative z-10 flex items-center">
-                Book a Demo
-                <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </motion.span>
-              </span>
-              <span className="absolute inset-0 bg-[#0253E4]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
-            </Button>
+            <DemoButton onClick={()=>{console.log("yo")}} variant="secondary" />
           </motion.div>
         </motion.div>
       </section>

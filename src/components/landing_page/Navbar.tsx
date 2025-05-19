@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
 
-import { ArrowRight } from "lucide-react"
+import DemoButton from "../demo_button"
 
 import Image from "next/image"
 
@@ -35,15 +34,8 @@ const Navbar = () => {
                 </motion.span>
             </div>
             <div className="flex items-center gap-6">
-                <Button className="bg-[#0253E4] hover:bg-[#0253E4]/90 text-white rounded-full px-6 py-4 text-lg relative overflow-hidden group">
-                    <span className="relative z-10 flex items-center">
-                        Book a Demo
-                        <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
-                            <ArrowRight className="ml-2 h-5 w-5" />
-                        </motion.span>
-                    </span>
-                    <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-                </Button>
+                <DemoButton onClick={()=>{console.log("yo")}} />  
+                
             </div>
         </motion.nav>
     )

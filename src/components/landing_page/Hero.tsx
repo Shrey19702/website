@@ -8,7 +8,7 @@ import { motion, useInView } from "framer-motion"
 // import anime from "animejs/lib/anime.es.js"
 // import { CrypticText } from "@/components/cryptic-text"
 import { ContentGlobe } from "@/components/content-globe"
-
+import DemoButton from "../demo_button"
 const Hero_Page = () => {
 
     const heroRef = useRef < HTMLDivElement > (null)
@@ -53,15 +53,7 @@ const Hero_Page = () => {
                         animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.6, delay: 1.8 }}
                     >
-                        <Button className="bg-[#0253E4] hover:bg-[#0253E4]/90 text-white rounded-full px-8 py-6 text-lg relative overflow-hidden group">
-                            <span className="relative z-10 flex items-center">
-                                Book a Demo
-                                <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
-                                    <ArrowRight className="ml-2 h-5 w-5" />
-                                </motion.span>
-                            </span>
-                            <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-                        </Button>
+                        <DemoButton onClick={()=>{console.log("yo")}} />
                     </motion.div>
                 </motion.div>
 
