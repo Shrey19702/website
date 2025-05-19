@@ -2,66 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
+import ThreeGlobe from "three-globe";
 import { useThree, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
 import { ArcWithIcon } from "./ArcWithIcon";
-
-// Replace static import with dynamic import to avoid SSR issues
-// ThreeGlobe will be loaded only on client side
-
-declare module "@react-three/fiber" {
-    interface ThreeElements {
-        threeGlobe: any; // Simplified type to avoid conflicts
-    }
-}
-
-const RING_PROPAGATION_SPEED = 3;
-const aspect = 1.2;
-const cameraZ = 300;
-
-type Position = {
-    order: number;
-    startLat: number;
-    startLng: number;
-    endLat: number;
-    endLng: number;
-    arcAlt: number;
-    color: string;
-    type: string;
-};
-
-export type GlobeConfig = {
-    pointSize?: number;
-    globeColor?: string;
-    showAtmosphere?: boolean;
-    atmosphereColor?: string;
-    atmosphereAltitude?: number;
-    emissive?: string;
-    emissiveIntensity?: number;
-    shininess?: number;
-    polygonColor?: string;
-    ambientLight?: string;
-    directionalLeftLight?: string;
-    directionalTopLight?: string;
-    pointLight?: string;
-    arcTime?: number;
-    arcLength?: number;
-    rings?: number;
-    maxRings?: number;
-    initialPosition?: {
-        lat: number;
-        lng: number;
-    };
-    autoRotate?: boolean;
-    autoRotateSpeed?: number;
-    opacity?: number; // Added for explicit opacity control
-};
-
-interface WorldProps {
-    globeConfig: GlobeConfig;
-    data: Position[];
-}
 
 // Sample data for content transfer and moderation
 const sampleData = [
@@ -218,16 +163,69 @@ const sampleData = [
     }
 ];
 
-// We'll initialize and extend ThreeGlobe on the client side only
-let ThreeGlobeClass: any = null;
+declare module "@react-three/fiber" {
+    interface ThreeElements {
+        threeGlobe: any; // Simplified type to avoid conflicts
+    }
+}
 
-export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
-    const globeRef = useRef<any | null>(null);
+extend({ ThreeGlobe: ThreeGlobe });
+
+const RING_PROPAGATION_SPEED = 3;
+const aspect = 1.2;
+const cameraZ = 300;
+
+type Position = {
+    order: number;
+    startLat: number;
+    startLng: number;
+    endLat: number;
+    endLng: number;
+    arcAlt: number;
+    color: string;
+    type: string;
+};
+
+export type GlobeConfig = {
+    pointSize?: number;
+    globeColor?: string;
+    showAtmosphere?: boolean;
+    atmosphereColor?: string;
+    atmosphereAltitude?: number;
+    emissive?: string;
+    emissiveIntensity?: number;
+    shininess?: number;
+    polygonColor?: string;
+    ambientLight?: string;
+    directionalLeftLight?: string;
+    directionalTopLight?: string;
+    pointLight?: string;
+    arcTime?: number;
+    arcLength?: number;
+    rings?: number;
+    maxRings?: number;
+    initialPosition?: {
+        lat: number;
+        lng: number;
+    };
+    autoRotate?: boolean;
+    autoRotateSpeed?: number;
+};
+
+interface WorldProps {
+    globeConfig: GlobeConfig;
+    data: Position[];
+}
+
+// let numbersOfRings = [0];
+
+export function Globe({ globeConfig, data }: WorldProps) {
+    const globeRef = useRef<ThreeGlobe | null>(null);
     const [isInitialized, setIsInitialized] = useState(false);
 
     const defaultProps = {
         pointSize: 1,
-        atmosphereColor: "#ffffff", // Default, overridden by globeConfig if provided
+        atmosphereColor: "#ffffff",
         showAtmosphere: true,
         atmosphereAltitude: 0.1,
         polygonColor: "rgba(2, 83, 228)",
@@ -242,44 +240,27 @@ export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
         ...globeConfig,
     };
 
-    // Load ThreeGlobe on the client side only
     useEffect(() => {
-        if (typeof window !== 'undefined' && !ThreeGlobeClass) {
-            // Import ThreeGlobe dynamically
-            import('three-globe').then(module => {
-                ThreeGlobeClass = module.default;
-                // Extend after import
-                extend({ ThreeGlobe: ThreeGlobeClass });
-                setIsInitialized(true);
-            });
-        }
-    }, []);
+        if (!globeRef.current) return;
 
-    useEffect(() => {
-        if (!globeRef.current || !ThreeGlobeClass) return;
+        setIsInitialized(true);
 
-        // Configure globe material
         const globeMaterial = globeRef.current.globeMaterial() as any;
-        globeMaterial.color = new Color("#ffffff");
+        globeMaterial.color = new Color("rgb(255,255,255)");
         globeMaterial.transparent = true;
-        globeMaterial.opacity = 0.7; // Set opacity to 0.7 as requested
+        globeMaterial.opacity = 0.8;
         globeMaterial.emissive = new Color("#0253E4");
         globeMaterial.emissiveIntensity = 0.4;
         globeMaterial.shininess = 100;
-
-        // Use an empty string instead of null for globeImageUrl
-        // This removes the texture but avoids the error
-        globeRef.current.globeImageUrl('');
-    }, [isInitialized]);
+    }, []);
 
     useEffect(() => {
-        if (!globeRef.current || !data || !isInitialized || !ThreeGlobeClass) return; // Ensure initialized
+        if (!globeRef.current || !data) return;
 
         const validCountries = countries && countries.features && Array.isArray(countries.features)
             ? countries.features
             : [];
 
-        // Set up globe visualization
         globeRef.current
             .hexPolygonsData(validCountries)
             .hexPolygonResolution(3)
@@ -287,19 +268,19 @@ export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
             .showAtmosphere(defaultProps.showAtmosphere)
             .atmosphereColor(defaultProps.atmosphereColor)
             .atmosphereAltitude(defaultProps.atmosphereAltitude)
-            .hexPolygonColor(() => "rgba(2, 83, 228, 1)"); // Landmasses remain blue
+            .hexPolygonColor(() => "rgba(2, 83, 228, 1)");
 
         globeRef.current
             .arcsData(data)
-            .arcStartLat((d: Position) => d.startLat * 1)
-            .arcStartLng((d: Position) => d.startLng * 1)
-            .arcEndLat((d: Position) => d.endLat * 1)
-            .arcEndLng((d: Position) => d.endLng * 1)
-            .arcColor((e: Position) => e.color)
-            .arcAltitude((e: Position) => e.arcAlt * 1)
+            .arcStartLat((d) => (d as Position).startLat * 1)
+            .arcStartLng((d) => (d as Position).startLng * 1)
+            .arcEndLat((d) => (d as Position).endLat * 1)
+            .arcEndLng((d) => (d as Position).endLng * 1)
+            .arcColor((e: any) => (e as Position).color)
+            .arcAltitude((e) => (e as Position).arcAlt * 1)
             .arcStroke(() => [0.32, 0.28, 0.5][Math.round(Math.random() * 2)])
             .arcDashLength(defaultProps.arcLength)
-            .arcDashInitialGap((e: Position) => e.order * 0.2)
+            .arcDashInitialGap((e) => (e as Position).order * 0.2)
             .arcDashGap(2)
             .arcDashAnimateTime(() => defaultProps.arcTime);
 
@@ -343,10 +324,10 @@ export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
             .ringRepeatPeriod(
                 (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings,
             );
-    }, [isInitialized, data, defaultProps]); // Added defaultProps as a dependency object
+    }, [isInitialized, data]);
 
     useEffect(() => {
-        if (!globeRef.current || !data || data.length === 0 || !isInitialized) return; // Ensure initialized
+        if (!globeRef.current || !data || data.length === 0) return;
 
         const interval = setInterval(() => {
             if (!globeRef.current) return;
@@ -377,23 +358,19 @@ export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
         return () => {
             clearInterval(interval);
         };
-    }, [isInitialized, data]); // More specific dependencies
+    }, [isInitialized, data]);
 
     return (
         <group>
-            {isInitialized && ThreeGlobeClass && (
-                <>
-                    <primitive object={new ThreeGlobeClass()} ref={globeRef} />
-                    {data.map((arc, index) => (
-                        <ArcWithIcon
-                            key={index}
-                            arcData={arc}
-                            globeRef={globeRef}
-                            animationTime={defaultProps.arcTime}
-                        />
-                    ))}
-                </>
-            )}
+            <primitive object={new ThreeGlobe()} ref={globeRef} />
+            {isInitialized && globeRef.current && data.map((arc, index) => (
+                <ArcWithIcon
+                    key={index}
+                    arcData={arc}
+                    globeRef={globeRef}
+                    animationTime={defaultProps.arcTime}
+                />
+            ))}
         </group>
     );
 }
@@ -412,7 +389,6 @@ export function WebGLRendererConfig() {
 
 export function World(props: WorldProps) {
     const { globeConfig } = props;
-
     return (
         <Canvas
             camera={{
@@ -481,20 +457,19 @@ export function genRandomNumbers(min: number, max: number, count: number) {
 
 export function ContentGlobe() {
     const globeConfig: GlobeConfig = {
-        globeColor: "#ffffff",      // Target: White globe
-        opacity: 0.7,               // Target: Translucent
+        globeColor: "#ffffff",
         showAtmosphere: true,
-        atmosphereColor: "#0253E4", // Blue atmosphere (as in image)
+        atmosphereColor: "#0253E4",
         atmosphereAltitude: 0.1,
-        polygonColor: "rgba(2, 83, 228, 0.25)", // For hexes/rings
-        emissive: "#ffffff",        // Target: White emissive glow for the globe itself
-        emissiveIntensity: 0.4,     // Intensity of the white glow
-        shininess: 0.9,              // A more standard shininess value
+        polygonColor: "rgba(2, 83, 228, 0.25)",
+        emissive: "#ffffff",
+        emissiveIntensity: 0.4,
+        shininess: 0.9,
         arcTime: 2000,
         arcLength: 0.9,
         rings: 1,
         maxRings: 3,
-        ambientLight: "#cccccc",    // Softer ambient light
+        ambientLight: "#ffffff",
         directionalLeftLight: "#ffffff",
         directionalTopLight: "#ffffff",
         pointLight: "#ffffff",
@@ -507,4 +482,4 @@ export function ContentGlobe() {
             <World globeConfig={globeConfig} data={sampleData} />
         </div>
     );
-}
+} 
