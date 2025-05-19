@@ -39,7 +39,7 @@ export function SimpleGlobe() {
     let originY = canvas.height / 2
     let rotationX = 0
     let rotationY = 0
-    let rotationSpeed = -0.005
+    let rotationSpeed = -0.001
     let time = 0
 
     // Set canvas dimensions
@@ -72,7 +72,7 @@ export function SimpleGlobe() {
 
     // Create points on the globe
     const points: Point[] = []
-    const numPoints = 200
+    const numPoints = 100
 
     for (let i = 0; i < numPoints; i++) {
       const theta = Math.random() * Math.PI * 2
@@ -99,7 +99,7 @@ export function SimpleGlobe() {
     // Add connections between points
     const connections: Connection[] = []
     const maxConnections = 100
-    const maxDistance = radius * 0.5
+    const maxDistance = radius
 
     for (let i = 0; i < maxConnections; i++) {
       const pointA = Math.floor(Math.random() * points.length)
@@ -130,7 +130,7 @@ export function SimpleGlobe() {
 
       // Update rotation
       rotationY += rotationSpeed
-      rotationX = Math.sin(time * 0.2) * 0.2
+      rotationX = Math.sin(time * 0.2) * 0.01
 
       // Sort points by z-coordinate for proper rendering
       const sortedPoints = [...points].sort((a, b) => {
@@ -162,7 +162,7 @@ export function SimpleGlobe() {
           const normalizedZ = (avgZ + radius) / (2 * radius)
           const opacity = normalizedZ * conn.opacity
 
-          ctx.strokeStyle = `rgba(2, 83, 228, ${opacity})`
+          ctx.strokeStyle = `rgb(200, 0, 0)`
           ctx.stroke()
         }
       })
@@ -199,21 +199,21 @@ export function SimpleGlobe() {
       ctx.lineWidth = 0.5
 
       // Equator
-      ctx.beginPath()
-      for (let i = 0; i < 100; i++) {
-        const angle = (i / 100) * Math.PI * 2
-        const x = radius * Math.cos(angle)
-        const z = radius * Math.sin(angle)
+        // ctx.beginPath()
+        // for (let i = 0; i < 100; i++) {
+        //   const angle = (i / 100) * Math.PI * 2
+        //   const x = radius * Math.cos(angle)
+        //   const z = radius * Math.sin(angle)
 
-        const rotatedX = x * Math.cos(rotationY) + z * Math.sin(rotationY)
+        //   const rotatedX = x * Math.cos(rotationY) + z * Math.sin(rotationY)
 
-        if (i === 0) {
-          ctx.moveTo(originX + rotatedX, originY)
-        } else {
-          ctx.lineTo(originX + rotatedX, originY)
-        }
-      }
-      ctx.stroke()
+        //   if (i === 0) {
+        //     ctx.moveTo(originX + rotatedX, originY)
+        //   } else {
+        //     ctx.lineTo(originX + rotatedX, originY)
+        //   }
+        // }
+        // ctx.stroke()
 
       // Meridian
       ctx.beginPath()
@@ -260,7 +260,7 @@ export function SimpleGlobe() {
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect()
       const mouseX = e.clientX - rect.left
-      rotationSpeed = (mouseX - originX) * 0.00002
+      rotationSpeed = (mouseX - originX) * 0.00001
     }
 
     // Add event listeners
@@ -284,7 +284,8 @@ export function SimpleGlobe() {
     >
       <canvas ref={canvasRef} className="w-[500px] h-[500px]"></canvas>
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] rounded-full bg-[#0253E4]/70 blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/10 " />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] rounded-full bg-primary/40 blur-3xl  " />
       </div>
     </motion.div>
   )
