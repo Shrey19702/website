@@ -38,9 +38,9 @@ const Trusted_By = () => {
                 transition={{ duration: 0.8 }}
             >
                 {[
-                    { name: "BOOM", image: "boom.png" },
-                    { name: "DeepfakeAnalysisUnit", image: "dau.png" },
                     { name: "The Quint", image: "quint.png" },
+                    { name: "DeepfakeAnalysisUnit", image: "dau.png" },
+                    { name: "BOOM", image: "boom.png" },
                 ].map((partner, index) => (
                     <motion.div
                         key={index}
