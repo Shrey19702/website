@@ -7,8 +7,8 @@ import { Inter } from "next/font/google"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Contrails AI",
-  description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content across digital platforms. Protect your digital ecosystem with our advanced AI technology.",
+  title: "Contrails AI - Advanced AI Solutions for Digital Content Safety ",
+  description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content. Protect your digital ecosystem with our advanced AI technology.",
   keywords: "AI, digital security, media verification, misinformation detection, content moderation, artificial intelligence, deepfake detection",
   authors: [{ name: "Contrails AI" }],
   creator: "Contrails AI",
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "Contrails AI - Reimagining AI for online Content Safety",
-    description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content across digital platforms.",
+    title: "Contrails AI - Advanced AI Solutions for Digital Content Safety ",
+    description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content. Protect your digital ecosystem with our advanced AI technology.",
     url: 'https://contrails.ai',
     siteName: 'Contrails AI',
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Contrails AI',
+        alt: 'Contrails AI - Digital Content Safety Solutions',
       },
     ],
     locale: 'en_US',
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Contrails AI - Reimagining AI for online Content Safety",
-    description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content across digital platforms.",
+    title: "Contrails AI - Advanced AI Solutions for Digital Content Safety ",
+    description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content. Protect your digital ecosystem with our advanced AI technology.",
     images: ['/og-image.png'],
     creator: '@contrailsai',
   },

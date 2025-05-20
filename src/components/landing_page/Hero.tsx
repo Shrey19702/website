@@ -24,12 +24,10 @@ const Hero_Page = () => {
                     transition={{ duration: 0.6 }}
                     className="relative z-10"
                 >
-                    <div className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6 font-outfit leading-tight" >
+                    <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6 font-outfit leading-tight" >
                         Reimagining AI for online
-                    </div>
-                    <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-outfit leading-tight text-primary" >
-                        Content Safety
-                    </div>
+                        <span className="block text-primary">Content Safety</span>
+                    </h1>
                     {/* <CrypticText
                       text="Safeguarding Digital Truth in an AI World"
                       className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-outfit leading-tight"
