@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import { useThree, Canvas, extend } from "@react-three/fiber";
@@ -220,7 +221,7 @@ const sampleData = [
 // We'll initialize and extend ThreeGlobe on the client side only
 let ThreeGlobeClass: any = null;
 
-export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
+export function Globe({ globeConfig, data }: WorldProps): React.ReactElement {
     const globeRef = useRef<any | null>(null);
     const [isInitialized, setIsInitialized] = useState(false);
 

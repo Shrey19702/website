@@ -1,12 +1,8 @@
 "use client"
 
-import Link from "next/link"
 import { useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, CheckCircle, AlertTriangle, } from "lucide-react"
+import { CheckCircle, AlertTriangle, } from "lucide-react"
 import { motion, useInView } from "framer-motion"
-// import anime from "animejs/lib/anime.es.js"
-// import { CrypticText } from "@/components/cryptic-text"
 import { ContentGlobe } from "@/components/content-globe"
 import DemoButton from "../demo_button"
 const Hero_Page = () => {

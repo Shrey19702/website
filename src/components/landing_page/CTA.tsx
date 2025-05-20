@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight, CheckCircle, Shield, AlertTriangle, Eye, Linkedin } from "lucide-react"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { motion } from "framer-motion"
 import DemoButton from "../demo_button"
 
 const CTA_Section = ()=>{
