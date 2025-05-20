@@ -269,7 +269,7 @@ export function Globe({ globeConfig, data }: WorldProps): JSX.Element {
         // Use an empty string instead of null for globeImageUrl
         // This removes the texture but avoids the error
         globeRef.current.globeImageUrl('');
-    }, [isInitialized]);
+    });
 
     useEffect(() => {
         if (!globeRef.current || !data || !isInitialized || !ThreeGlobeClass) return; // Ensure initialized

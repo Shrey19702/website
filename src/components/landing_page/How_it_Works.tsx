@@ -105,11 +105,11 @@ const How_It_Works = () => {
                                     <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
                                         1
                                     </div>
-                                    <div className="flex items-end gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                    <div className="flex items-end gap-4">
+                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Content Ingestion</h3>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.25} stroke="currentColor" className="size-20">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
                                         </svg>
-                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Content Ingestion</h3>
                                     </div>
                                 </div>
                             </motion.div>
@@ -123,12 +123,12 @@ const How_It_Works = () => {
                                     <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
                                         2
                                     </div>
-                                    <div className="flex items-end gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                    <div className="flex items-end gap-4">
+                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Multi-layer Analysis</h3>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.25} stroke="currentColor" className="size-20">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" />
                                         </svg>
 
-                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Multi-layer Analysis</h3>
                                     </div>
 
                                 </div>
@@ -143,12 +143,12 @@ const How_It_Works = () => {
                                     <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-[#0253E4] text-white flex items-center justify-center font-bold text-lg mb-4 md:mb-6">
                                         3
                                     </div>
-                                    <div className="flex items-end gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                    <div className="flex items-end gap-4">
+                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Threat Detection</h3>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.25} stroke="currentColor" className="size-20">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
                                         </svg>
 
-                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Threat Detection</h3>
                                     </div>
 
                                 </div>
@@ -164,12 +164,12 @@ const How_It_Works = () => {
                                         4
                                     </div>
 
-                                    <div className="flex items-end gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-20">
+                                    <div className="flex items-end gap-4">
+                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Actionable Insights</h3>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.25} stroke="currentColor" className="size-20">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605" />
                                         </svg>
 
-                                        <h3 className="text-xl md:text-4xl font-semibold mb-3 md:mb-4 font-outfit">Actionable Insights</h3>
                                     </div>
 
                                 </div>
