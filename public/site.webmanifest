@@ -1,0 +1,17 @@
+{
+  "name": "Contrails AI",
+  "short_name": "Contrails",
+  "description": "Reimagining AI for online Content Safety",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait"
+} 

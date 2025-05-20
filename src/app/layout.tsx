@@ -7,9 +7,74 @@ import { Inter } from "next/font/google"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Contrails AI - Safeguarding Digital Truth",
-  description:
-    "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content across digital platforms.",
+  title: "Contrails AI",
+  description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content across digital platforms. Protect your digital ecosystem with our advanced AI technology.",
+  keywords: "AI, digital security, media verification, misinformation detection, content moderation, artificial intelligence, deepfake detection",
+  authors: [{ name: "Contrails AI" }],
+  creator: "Contrails AI",
+  publisher: "Contrails AI",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://contrails.ai'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Contrails AI - Reimagining AI for online Content Safety",
+    description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content across digital platforms.",
+    url: 'https://contrails.ai',
+    siteName: 'Contrails AI',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Contrails AI',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Contrails AI - Reimagining AI for online Content Safety",
+    description: "Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful content across digital platforms.",
+    images: ['/og-image.png'],
+    creator: '@contrailsai',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: [
+      { url: '/logo.svg' },
+      { url: '/favicon.ico' },
+    ],
+    apple: [
+      { url: '/apple-icon.png' },
+    ],
+    other: [
+      {
+        rel: 'apple-touch-icon-precomposed',
+        url: '/apple-touch-icon-precomposed.png',
+      },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  verification: {
+    google: 'your-google-site-verification',
+  },
 }
 
 export default function RootLayout({
@@ -24,6 +89,9 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="/logo.svg" />
       </head>
       <body className={inter.className}>
           {children}

@@ -34,8 +34,7 @@ const Navbar = () => {
                 </motion.span>
             </div>
             <div className="flex items-center gap-6">
-                <DemoButton onClick={()=>{console.log("yo")}} />  
-                
+                <DemoButton onClick={() => window.open("https://cal.com/ami-contrails/", "_blank")} />
             </div>
         </motion.nav>
     )

@@ -7,7 +7,7 @@ import { ContentGlobe } from "@/components/content-globe"
 import DemoButton from "../demo_button"
 const Hero_Page = () => {
 
-    const heroRef = useRef < HTMLDivElement > (null)
+    const heroRef = useRef<HTMLDivElement>(null)
     const isHeroInView = useInView(heroRef, { once: false })
 
     return (
@@ -49,7 +49,7 @@ const Hero_Page = () => {
                         animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.6, delay: 1.8 }}
                     >
-                        <DemoButton onClick={()=>{console.log("yo")}} />
+                        <DemoButton onClick={() => window.open("https://cal.com/ami-contrails/", "_blank")} />
                     </motion.div>
                 </motion.div>
 

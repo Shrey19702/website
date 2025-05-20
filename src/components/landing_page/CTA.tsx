@@ -53,7 +53,7 @@ const CTA_Section = ()=>{
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex justify-center"
           >
-            <DemoButton onClick={()=>{console.log("yo")}} variant="secondary" />
+            <DemoButton onClick={() => window.open("https://cal.com/ami-contrails/", "_blank")} variant="secondary" />
           </motion.div>
         </motion.div>
       </section>
