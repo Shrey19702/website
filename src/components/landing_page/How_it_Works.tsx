@@ -67,12 +67,12 @@ const How_It_Works = () => {
 
 
     return (
-        <div className="relative" ref={stickyContainerRef}>
+        <div className="relative font-outfit" ref={stickyContainerRef}>
             <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden"> {/* Ensure h-screen or enough height */}
                 <div className="container mx-auto px-4 py-16 w-full"> {/* Make container take full width of sticky parent */}
                     <div className="text-center mb-12 md:mb-16"> {/* Increased bottom margin */}
                         <motion.h2
-                            className="text-3xl md:text-4xl font-bold mb-4 font-outfit"
+                            className="text-3xl md:text-4xl font-bold mb-4 "
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -81,7 +81,7 @@ const How_It_Works = () => {
                             How Contrails AI Works
                         </motion.h2>
                         <motion.p
-                            className="text-lg text-gray-700 max-w-2xl mx-auto font-outfit"
+                            className="text-lg text-gray-700 max-w-2xl mx-auto"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -178,11 +178,11 @@ const How_It_Works = () => {
 
                         {/* Right side - Changing Visuals (Opacity matches text) */}
                         {/* This also needs to be a container for absolute positioned visuals */}
-                        <div className="relative h-full hidden md:block"> {/* Hide on small screens if too cluttered, or adjust layout */}
+                        <div className="relative font-outfit h-full hidden md:block"> {/* Hide on small screens if too cluttered, or adjust layout */}
                             {/* 1 */}
                             <motion.div className="absolute inset-0" style={{ opacity: section1Opacity }}> {/* No Y transform, just fade */}
                                 <div className="relative rounded-3xl overflow-hidden p-5 py-8 shadow shadow-primary aspect-[16/10]">
-                                    <p className=" py-4 font-outfit text-base">
+                                    <p className=" py-4 text-base">
                                         Our system processes videos, audio, images, and text from any source or format. The advanced
                                         ingestion pipeline handles multiple file types and can extract content from various platforms
                                         including social media, news sites, and direct uploads.

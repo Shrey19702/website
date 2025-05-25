@@ -1,41 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-2 -2 52 40" stroke-width="1.5" stroke="#0253E4">
-  <title>Document Analysis Status</title>
-
-
-
-  <!-- 1. Document Icon (Base) -->
-  <g id="document-icon" stroke-width="1" transform="translate(3 8) " >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-    <!-- <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" /> -->
-  </g>
-
-  <!-- 2. Search Magnifying Glass (Analyzing) -->
-  <!-- Positioned over the top-right of the document, slightly smaller -->
-  <g fill="rgba(2, 83, 228, 0.3)" stroke="#000000" id="search-icon" transform="translate(18 15) rotate(100) scale(0.5)">
-    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-  </g>
-
-  <!-- correct arrow -->
-  <g stroke="#000000" id="search-icon" transform="translate(23 15) rotate(330) scale(0.3)">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-  </g>
-  <!-- caution arrow -->
-  <g stroke="#000000" id="search-icon" transform="translate(27 18) rotate(30) scale(0.3)">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-</g>
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    
+    <!-- Magnifying glass lens effect -->
+    <radialGradient id="lensGradient" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:1" />
+      <!-- <stop offset="70%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /> -->
+      <stop offset="100%" style="stop-color:rgba(0,0,0,0.1);stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Drop shadow filter -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.3)"/>
+    </filter>
+  </defs>
   
+  <!-- Background
+  <rect width="600" height="400" fill="#f8f9fa"/> -->
 
+  
+  <!-- Bar 1 -->
+  <rect x="100" y="180" width="40" height="150" fill="#0253E4" stroke="#0253E4" stroke-width="4" rx="2">
+    <animate attributeName="height" values="150;100;180;120;150" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="180;230;150;210;180" dur="8s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Bar 2 -->
+  <rect x="160" y="130" width="40" height="200" fill="#0253E4" stroke="#0253E4" stroke-width="4" rx="2">
+    <animate attributeName="height" values="200;160;220;180;200" dur="8s" begin="0.5s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="130;170;110;150;130" dur="8s" begin="0.5s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Bar 3 (suspicious) -->
+  <rect x="220" y="80" width="40" height="250" fill="#E53E3E" stroke="#E53E3E" stroke-width="4" rx="2">
+    <animate attributeName="height" values="250;200;280;230;250" dur="8s" begin="1s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="80;130;50;100;80" dur="8s" begin="1s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Bar 4 -->
+  <rect x="280" y="230" width="40" height="100" fill="#0253E4" stroke="#0253E4" stroke-width="4" rx="2">
+    <animate attributeName="height" values="100;80;120;90;100" dur="8s" begin="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="230;250;210;240;230" dur="8s" begin="1.5s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Bar 5 -->
+  <rect x="340" y="155" width="40" height="175" fill="#0253E4" stroke="#0253E4" stroke-width="4" rx="2">
+    <animate attributeName="height" values="175;140;200;160;175" dur="8s" begin="2s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="155;190;130;170;155" dur="8s" begin="2s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Bar 6 -->
+  <!-- <rect x="400" y="205" width="40" height="125" fill="none" stroke="#0253E4" stroke-width="4" rx="2">
+    <animate attributeName="height" values="125;100;150;110;125" dur="8s" begin="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="y" values="205;230;180;220;205" dur="8s" begin="2.5s" repeatCount="indefinite"/>
+  </rect> -->
 
-  <!-- 3. Check Mark in Circle (Good) -->
-  <!-- Positioned to the right of the document, smaller -->
-  <g stroke="#33AA33" id="check-icon" transform="translate(30 5) scale(0.55)">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+    <!-- Axes -->
+  <line x1="80" y1="80" x2="80" y2="330" stroke="#0050E0" stroke-width="4"/>
+  <line x1="80" y1="330" x2="460" y2="330" stroke="#0050E0" stroke-width="4"/>
+
+  
+  <!-- Magnifying glass group -->
+  <g filter="url(#shadow)">
+    <!-- Magnifying glass circle -->
+    <circle cx="300" cy="200" r="25" fill="url(#lensGradient)" stroke="#2D3748" stroke-width="5" opacity="0.9">
+      <animate attributeName="cx" values="300;450;200;350;150;400;300" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="200;150;280;100;250;180;200" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Magnifying glass handle -->
+    <line x1="318" y1="218" x2="330" y2="230" stroke="#2D3748" stroke-width="6" stroke-linecap="round">
+      <animate attributeName="x1" values="318;468;218;368;168;418;318" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="y1" values="218;168;298;118;268;198;218" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="330;480;230;380;180;430;330" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="y2" values="230;180;310;130;280;210;230" dur="12s" repeatCount="indefinite"/>
+    </line>
+    
+    <!-- Magnifying glass lens highlight -->
+    <!-- <ellipse cx="294" cy="194" rx="8" ry="12" fill="rgba(255,255,255,0.6)" opacity="0.8">
+      <animate attributeName="cx" values="294;444;194;344;144;394;294" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="194;144;274;94;244;174;194" dur="12s" repeatCount="indefinite"/>
+    </ellipse> -->
   </g>
-
-  <!-- 4. Caution in Triangle (Bad) -->
-  <!-- Positioned below the check mark, to the right of the document, smaller -->
-  <g stroke="#FF3333" id="caution-icon" transform="translate(30 19) scale(0.55)">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
-  </g>
+  
 
 </svg>

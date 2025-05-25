@@ -10,6 +10,7 @@ import How_It_Works from "@/components/landing_page/How_it_Works"
 import Trusted_By from "@/components/landing_page/Trusted_by"
 import CTA_Section from "@/components/landing_page/CTA"
 import Footer from "@/components/landing_page/Footer"
+import { FeaturesSectionDemo } from "@/components/landing_page/features"
 
 export default function Home() {
   // const [scrollY, setScrollY] = useState(0)
@@ -104,7 +105,9 @@ export default function Home() {
       <Services_Section />
 
       {/* How It Works Section - Improved Sticky Scroll */}
-      <How_It_Works />
+      {/* <How_It_Works /> */}
+
+      <FeaturesSectionDemo />
 
       {/* Trusted By Section */}
       <Trusted_By />

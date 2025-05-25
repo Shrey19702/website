@@ -1,0 +1,8 @@
+references:
+
+https://deepmedia.ai/product
+https://forgestudio.ai/
+
+
+ui elements:
+https://ui.aceternity.com/components/wavy-background
