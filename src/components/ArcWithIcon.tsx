@@ -140,24 +140,26 @@ export function ArcWithIcon({
         <Html position={localPosition} center>
             <div
                 style={{
-                    background: arcData.color === "#ff0000" 
+                    background: "rgba(255,255,255,0.7)", 
+                    
+                    color: arcData.color === "#ff0000" 
                         ? "rgba(255,0,0,0.85)" 
                         : "rgba(0,0,255,0.85)",
-                    color: "white",
-                    padding: "4px 6px",
+                    // color: "white",
+                    padding: "3px 4px",
                     borderRadius: "100px", // Make it circular for a single icon
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    boxShadow: "0 0 8px rgba(0,0,0,0.5)",
-                    border: arcData.color === "#ff0000" 
-                        ? "1px solid rgba(255,100,100,0.9)" 
-                        : "1px solid rgba(100,100,255,0.9)",
+                    // boxShadow: "0 0 8px rgba(0,0,0,0.5)",
+                    // border: arcData.color === "#ff0000" 
+                    //     ? "1px solid rgba(255,100,100,0.9)" 
+                    //     : "1px solid rgba(100,100,255,0.9)",
                     pointerEvents: "none", // Important for interaction with globe
                     // Opacity and transform handled by visibility state now
                 }}
             >
-                {React.createElement(IconComponent, { size: 14 })} {/* Slightly smaller icon */}
+                {React.createElement(IconComponent, { size: 20 })} {/* Slightly smaller icon */}
             </div>
         </Html>
     );

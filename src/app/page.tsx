@@ -72,7 +72,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Flowing line that spans the entire page */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-10 flowing-lines" ref={lineRef}>
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-10 flowing-lines" ref={lineRef}>
         <svg className="flowing-line w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <path d="M0,50 C20,20 40,80 60,40 S80,60 100,50" fill="none" stroke="#0253E4" strokeWidth="0.2" />
           <path

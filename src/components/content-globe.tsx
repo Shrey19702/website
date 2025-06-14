@@ -82,7 +82,7 @@ const sampleData = [
         startLng: 139.6503,
         endLat: 37.7749,
         endLng: -122.4194,
-        arcAlt: 0.4,
+        arcAlt: 0.2,
         color: "#0000ff",
         type: "document",
     },
@@ -102,7 +102,7 @@ const sampleData = [
         startLng: 37.6173,
         endLat: 48.8566,
         endLng: 2.3522,
-        arcAlt: 0.3,
+        arcAlt: 0.1,
         color: "#0000ff",
         type: "malicious",
     },
@@ -112,7 +112,7 @@ const sampleData = [
         startLng: 151.2093,
         endLat: 1.3521,
         endLng: 103.8198,
-        arcAlt: 0.5,
+        arcAlt: 0.2,
         color: "#0000ff",
         type: "email",
     },
@@ -122,7 +122,7 @@ const sampleData = [
         startLng: -74.0060,
         endLat: 51.5074,
         endLng: -0.1278,
-        arcAlt: 0.3,
+        arcAlt: 0.1,
         color: "#0000ff",
         type: "email"
     },
@@ -132,7 +132,7 @@ const sampleData = [
         startLng: 139.6503,
         endLat: 37.7749,
         endLng: -122.4194,
-        arcAlt: 0.4,
+        arcAlt: 0.2,
         color: "#0000ff",
         type: "media"
     },
@@ -142,7 +142,7 @@ const sampleData = [
         startLng: 72.8777,
         endLat: 31.2304,
         endLng: 121.4737,
-        arcAlt: 0.2,
+        arcAlt: 0.1,
         color: "#0000ff",
         type: "document"
     },
@@ -152,7 +152,7 @@ const sampleData = [
         startLng: 37.6173,
         endLat: 48.8566,
         endLng: 2.3522,
-        arcAlt: 0.3,
+        arcAlt: 0.1,
         color: "#0000ff",
         type: "email"
     },
@@ -162,7 +162,7 @@ const sampleData = [
         startLng: 151.2093,
         endLat: 1.3521,
         endLng: 103.8198,
-        arcAlt: 0.5,
+        arcAlt: 0.2,
         color: "#0000ff",
         type: "media"
     },
@@ -172,7 +172,7 @@ const sampleData = [
         startLng: 114.1694,
         endLat: 28.6139,
         endLng: 77.2090,
-        arcAlt: 0.4,
+        arcAlt: 0.2,
         color: "#0000ff",
         type: "malicious"
     },
@@ -182,7 +182,7 @@ const sampleData = [
         startLng: 116.4074,
         endLat: 35.6762,
         endLng: 139.6503,
-        arcAlt: 0.3,
+        arcAlt: 0.1,
         color: "#0000ff",
         type: "malicious"
     },
@@ -192,7 +192,7 @@ const sampleData = [
         startLng: 2.3522,
         endLat: 40.7128,
         endLng: -74.0060,
-        arcAlt: 0.4,
+        arcAlt: 0.2,
         color: "#ff0000",
         type: "document"
     },
@@ -202,7 +202,7 @@ const sampleData = [
         startLng: -122.4194,
         endLat: 51.5074,
         endLng: -0.1278,
-        arcAlt: 0.3,
+        arcAlt: 0.1,
         color: "#ff0000",
         type: "email"
     },
@@ -212,7 +212,7 @@ const sampleData = [
         startLng: 121.4737,
         endLat: 33.8688,
         endLng: 151.2093,
-        arcAlt: 0.5,
+        arcAlt: 0.2,
         color: "#ff0000",
         type: "media"
     }
@@ -384,7 +384,7 @@ export function Globe({ globeConfig, data }: WorldProps): React.ReactElement {
             {isInitialized && ThreeGlobeClass && (
                 <>
                     <primitive object={new ThreeGlobeClass()} ref={globeRef} />
-                    {data.map((arc, index) => (
+                    {/* {data.map((arc, index) => (
                         <ArcWithIcon
                             key={index}
                             arcData={arc}
@@ -395,7 +395,7 @@ export function Globe({ globeConfig, data }: WorldProps): React.ReactElement {
                             arcDashGap={0.8}
                             globeRadius={100}
                         />
-                    ))}
+                    ))} */}
                 </>
             )}
         </group>
@@ -507,8 +507,10 @@ export function ContentGlobe() {
     };
 
     return (
-        <div className="w-[600px] h-[500px]">
-            <World globeConfig={globeConfig} data={sampleData} />
+        <div className=" bg-gradient-to-r from-transparent to-primary/20 rounded-full w-[1200px] h-[1000px] pt-28 ">
+            <div className=" rounded-full w-[900px] h-[750px] ">
+                <World globeConfig={globeConfig} data={sampleData} />
+            </div>
         </div>
     );
 }

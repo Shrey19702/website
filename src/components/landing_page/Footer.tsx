@@ -6,15 +6,15 @@ import { WavyBackground } from "../wavy-background"
 
 const Footer = () => {
     return (
-        <footer className="relative pt-12 border-t border-gray-100 ">
+        <footer className="relative pt-12  ">
             <WavyBackground className="max-w-full min-h-96 absolute top-0 left-0 w-full h-full z-0"
-                colors={["#0253E4", "#ffffff"]}
+                colors={["#0253E4", "#0253E4", "#ffffff", "#ffffff"]}
                 backgroundFill="transparent"
                 blur={10}
             />
 
 
-            <div className="container absolute flex flex-col justify-between bottom-0 left-0 z-10 mx-auto px-10 py-20 bg-gradient-to-b from-white to-white/10 backdrop-blur-xl h-56 ">
+            <div className="w-full absolute flex flex-col justify-between bottom-0 left-0 z-10 mx-auto px-10 py-20 bg-gradient-to-b from-white to-white/10 backdrop-blur-xl h-56 ">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="flex items-center gap-2 mb-6 md:mb-0">
                         <div className=" h-8 w-8 relative">

@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle, Shield, AlertTriangle, Eye, Linkedin } from "l
 
 const Services_Section = () => {
     return (
-        <section className="container mx-auto px-4 py-16 bg-[#0253E4]/5 mb-20 relative overflow-hidden">
+        <section className=" px-20 py-16 bg-primary/5 mb-20 relative overflow-hidden">
             {/* Hide flowing lines in this section */}
             <style jsx global>{`
           .services-section .flowing-lines {

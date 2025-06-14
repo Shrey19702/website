@@ -9,7 +9,7 @@ const Navbar = () => {
     return (
 
         <motion.nav
-            className="container mx-auto py-6 px-4 flex justify-between items-center relative z-50"
+            className="container bg-transparent mx-auto py-6 px-4 flex justify-between items-center relative z-50"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
