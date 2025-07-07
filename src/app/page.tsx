@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect} from "react"
+import { useRef, useEffect } from "react"
 import anime from "animejs/lib/anime.es.js"
 
 import Navbar from "@/components/landing_page/Navbar"
@@ -92,22 +92,24 @@ export default function Home() {
       <Hero_Page />
 
       {/* Curved Divider */}
-      <div className="relative h-24 overflow-hidden">
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="h-full w-full">
-          <path
-            d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-            className="fill-[#0253E4]/5"
-          ></path>
-        </svg>
+      <div className=" h-12">
+        <div className=" h-56 relative -top-44   ">
+          <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="h-full w-full">
+            <path
+              d="M0.00,49.98 C150.00,150.00 349.20,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+              className="fill-[#f3f5fe]"
+            ></path>
+          </svg>
+        </div>
       </div>
 
       {/* Services Section */}
       <Services_Section />
 
-      {/* How It Works Section - Improved Sticky Scroll */}
-      {/* <How_It_Works /> */}
-
       <FeaturesSectionDemo />
+
+      {/* How It Works Section - Improved Sticky Scroll */}
+      <How_It_Works />
 
       {/* Trusted By Section */}
       <Trusted_By />

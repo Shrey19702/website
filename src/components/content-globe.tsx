@@ -507,8 +507,8 @@ export function ContentGlobe() {
     };
 
     return (
-        <div className=" bg-gradient-to-r from-transparent to-primary/20 rounded-full w-[1200px] h-[1000px] pt-28 ">
-            <div className=" rounded-full w-[900px] h-[750px] ">
+        <div className=" relative -left-20 -top-10 scale-125 pt-28 h-[200vh] w-[100vw] ">
+            <div className=" rounded-full w-[1200px] h-[1000px] ">
                 <World globeConfig={globeConfig} data={sampleData} />
             </div>
         </div>

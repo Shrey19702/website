@@ -1,79 +1,227 @@
-import { color, motion } from "framer-motion"
-import { ArrowRight, CheckCircle, Shield, AlertTriangle, Eye, Linkedin } from "lucide-react"
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Eye, AlertTriangle, Shield } from 'lucide-react';
+import Deepfake_Detection_Media from '../animated_media/deepfake_detection';
+import MisinformationGuard from '../animated_media/misinformation_guard';
+import ContentFilter from '../animated_media/content_filter'
 
-const Services_Section = () => {
-    return (
-        <section className=" px-20 py-16 bg-primary/5 mb-20 relative overflow-hidden">
-            {/* Hide flowing lines in this section */}
-            <style jsx global>{`
-          .services-section .flowing-lines {
-            opacity: 0;
-          }
-        `}</style>
-
-            <div className="text-center mb-16 relative z-10">
-                <motion.h2
-                    className="text-3xl md:text-4xl font-bold mb-4 font-outfit"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    Our Trust & Safety Solutions
-                </motion.h2>
-                <motion.p
-                    className="text-lg text-gray-700 max-w-2xl mx-auto font-outfit"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                    Comprehensive tools to detect and mitigate harmful content across all digital platforms
-                </motion.p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-                {[
-                    {
-                        icon: <Eye className="h-10 w-10 text-[#0253E4]" />,
-                        title: "Deepfake Detection",
-                        description: "Identify AI-manipulated video and audio content with industry-leading accuracy",
-                        gif: "/features/face_scan.gif?height=200&width=300",
-                    },
-                    {
-                        icon: <AlertTriangle className="h-10 w-10 text-[#0253E4]" />,
-                        title: "Misinformation Analysis",
-                        description: "Detect false claims and misleading content across social media platforms",
-                        gif: "/features/analyze.svg",
-                    },
-                    {
-                        icon: <Shield className="h-10 w-10 text-[#0253E4]" />,
-                        title: "Harmful Content Filtering",
-                        description: "Identify and flag hate speech, illegal advertisements, and harmful content",
-                        gif: "/features/audio_waveform.gif?height=200&width=300",
-                    },
-                ].map((service, index) => (
-                    <motion.div
-                        key={index}
-                        className="card-hover bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-[#0253E4]/10 hover:border-[#0253E4]/30 transition-all hover:shadow-md relative"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                        <div className="mb-5 p-3 bg-[#0253E4]/10 inline-block rounded-full group-hover:bg-[#0253E4]/20 transition-colors">
-                            {service.icon}
-                        </div>
-                        <h3 className="text-xl font-semibold mb-3 font-outfit">{service.title}</h3>
-                        <p className="text-gray-600 font-outfit mb-4">{service.description}</p>
-                        <div className="  bg-white rounded-3xl overflow-hidden mt-4 transition-shadow relative flex items-center justify-center z-10 ">
-                            <img src={service.gif || "/placeholder.svg"} alt={service.title} className=" w-96 h-96 scale-[105%] p-2" />
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-        </section>
-    )
+interface Service {
+    icon: React.ReactElement;
+    title: string;
+    subtitle: string;
+    description: string;
+    gif?: string;
+    color: string;
+    media_component?: React.ReactElement;
 }
 
-export default Services_Section;
+const TrustSafetySection: React.FC = () => {
+    const [activeCard, setActiveCard] = useState<number>(0);
+    const [progress, setProgress] = useState<number>(0);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const progressRef = useRef<NodeJS.Timeout | null>(null);
+
+    const services: Service[] = [
+        {
+            icon: <Eye className="h-6 w-6" />,
+            title: "Deepfake Detection",
+            subtitle: "AI-POWERED ANALYSIS",
+            description: "Our advanced deeplearning models analyze expressions, patterns, and pixel-level inconsistencies to identify AI-manipulations in content.",
+            media_component: <Deepfake_Detection_Media />,
+            color: "from-blue-500 to-cyan-500"
+        },
+        {
+            icon: <AlertTriangle className="h-6 w-6" />,
+            title: "Misinformation Guard",
+            subtitle: "REAL-TIME VERIFICATION",
+            description: "Instantly detect suspicious narrative patterns. Our system stops false information before it spreads.",
+            gif: "/features/analyze.svg",
+            color: "from-amber-500 to-orange-500",
+            media_component: <MisinformationGuard />,
+        },
+        {
+            icon: <Shield className="h-6 w-6" />,
+            title: "Smart Content Filter",
+            subtitle: "AUTOMATED PROTECTION",
+            description: "Models trained on millions of examples identify harmful content with contextual understanding.",
+            gif: "/features/audio_waveform.gif",
+            color: "from-emerald-500 to-green-500",
+            media_component: <ContentFilter />
+        }
+    ];
+
+    const CYCLE_DURATION = 12000; // 12 seconds per card
+    const PROGRESS_UPDATE = 50; // Update every 50ms
+
+    // Start auto-cycle and progress tracking
+    useEffect(() => {
+        startCycle();
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+            if (progressRef.current) {
+                clearInterval(progressRef.current);
+            }
+        };
+    }, []);
+
+    const startCycle = (): void => {
+        // Clear existing intervals
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+        }
+        if (progressRef.current) {
+            clearInterval(progressRef.current);
+        }
+
+        // Reset progress
+        setProgress(0);
+
+        // Auto-advance cards
+        intervalRef.current = setInterval(() => {
+            setActiveCard(prev => (prev + 1) % services.length);
+            setProgress(0);
+        }, CYCLE_DURATION);
+
+        // Update progress
+        progressRef.current = setInterval(() => {
+            setProgress(prev => {
+                const newProgress = prev + (100 / (CYCLE_DURATION / PROGRESS_UPDATE));
+                return newProgress >= 100 ? 0 : newProgress;
+            });
+        }, PROGRESS_UPDATE);
+    };
+
+    const selectCard = (index: number): void => {
+        if (index === activeCard) return;
+
+        setActiveCard(index);
+        setProgress(0);
+        startCycle(); // Reset the cycle
+    };
+
+    return (
+        <section className="px-6 lg:px-20 py-24 bg-gradient-to-b from-primary/5 via-primary/10 via-60% to-white font-outfit relative">
+            <div className="max-w-7xl mx-auto">
+                {/* Header */}
+                <motion.div
+                    className="text-center mb-16"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
+                        AI Safety at Enterprise Scale
+                    </h2>
+                    <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+                        Deploy comprehensive AI-powered protection across all your digital platforms.
+                        Detect threats in real-time, prevent harmful content, and maintain trust at scale.
+                    </p>
+                </motion.div>
+
+                {/* Navigation Cards */}
+                <motion.div
+                    className="flex gap-3 mb-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
+                >
+                    {services.map((service, index) => (
+                        <motion.button
+                            key={index}
+                            onClick={() => selectCard(index)}
+                            className={`relative flex-1 p-6 text-left rounded-2xl transition-all overflow-hidden group ${activeCard === index
+                                    ? ' bg-white shadow'
+                                    : ' bg-slate-50 shadow-sm hover:bg-white'
+                                }`}
+                            whileHover={{ y: activeCard !== index ? -2 : 0 }}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            {/* Progress bar */}
+                            {activeCard === index && (
+                                <div className="absolute bottom-0 left-0 h-full bg-gradient-to-r from-primary/5 to-primary/20 transition-all duration-75 ease-linear"
+                                    style={{ width: `${progress}%` }} />
+                            )}
+
+                            <div className="flex items-center gap-4 z-10 relative">
+                                <div className={`p-3 rounded-xl bg-gradient-to-r ${service.color} text-white`}>
+                                    {service.icon}
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-slate-900 text-lg mb-1">
+                                        {service.title}
+                                    </h3>
+                                    {/* <p className="text-sm text-slate-500 font-medium">
+                                        {service.subtitle}
+                                    </p> */}
+                                </div>
+                            </div>
+                        </motion.button>
+                    ))}
+                </motion.div>
+
+                {/* Main Content */}
+                <div className="bg-white rounded-3xl overflow-hidden">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeCard}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            className="grid lg:grid-cols-2 gap-0 min-h-[600px]"
+                        >
+                            {/* Content Side */}
+                            <div className="flex flex-col justify-center p-12 lg:p-16">
+                                <motion.div
+                                    initial={{ opacity: 0, x: -30 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.2, duration: 0.5 }}
+                                >
+                                    <div className="mb-8">
+                                        {/* <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r ${services[activeCard].color} text-white text-sm font-semibold mb-6`}>
+                                            {services[activeCard].icon}
+                                            {services[activeCard].subtitle}
+                                        </div> */}
+                                        <h3 className="text-3xl lg:text-4xl font-semibold text-slate-900  leading-tight">
+                                            {services[activeCard].title}
+                                        </h3>
+                                    </div>
+
+                                    <p className="text-slate-600 leading-relaxed text-lg lg:text-xl text-pretty max-w-96 ">
+                                        {services[activeCard].description}
+                                    </p>
+
+                                </motion.div>
+                            </div>
+
+                            {/* Visual Side - Clean GIF Display */}
+                            <div className="flex items-center justify-center p-12  ">
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.3, duration: 0.6 }}
+                                    className="w-full h-full relative -left-20"
+                                >
+                                    {services[activeCard].media_component ?
+                                        services[activeCard].media_component :
+                                        <img
+                                            src={services[activeCard].gif}
+                                            alt={services[activeCard].title}
+                                            className="w-full h-auto object-contain"
+                                            style={{ maxHeight: '400px' }}
+                                        />
+                                    }
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
+            </div>
+        </section>
+    );
+};
+
+export default TrustSafetySection;

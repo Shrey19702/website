@@ -95,7 +95,7 @@ export const InfiniteMovingCards = ({
 
           return (
             <motion.li
-              className="relative w-40 h-48 shrink-0 rounded-xl border border-primary/40 dark:border-primary/20 bg-gradient-to-b from-white to-blue-100 dark:from-slate-800 dark:to-sky-900/50 flex flex-col items-center justify-center overflow-hidden cursor-pointer p-4"
+              className="relative w-20 h-24 shrink-0 rounded-xl border border-primary/40 dark:border-primary/20 bg-gradient-to-b from-white to-blue-100 dark:from-slate-800 dark:to-sky-900/50 flex flex-col items-center justify-center overflow-hidden cursor-pointer p-4"
               key={`card-${item.name}-${idx}`}
               initial="rest"
               whileHover="hovered"
@@ -127,7 +127,7 @@ export const InfiniteMovingCards = ({
                   opacity: { duration: 0.4, ease: "easeInOut" },
                   // Transition for scale (applies to initial scale-up AND pulsation)
                   scale: {
-                    duration: 1.2, // Duration of one full pulse cycle (e.g., 1 -> 1.08 -> 1)
+                    duration: 1.1, // Duration of one full pulse cycle (e.g., 1 -> 1.08 -> 1)
                     repeat: Infinity,
                     repeatType: "mirror", // "mirror" makes it go back and forth smoothly
                     ease: "easeInOut",
@@ -137,23 +137,23 @@ export const InfiniteMovingCards = ({
               />
 
               {/* Content container (Icon + Name) */}
-              <motion.div className="z-10 flex flex-col items-center justify-center h-full w-full text-center">
+              <motion.div className="z-10 relative flex flex-col items-center justify-center h-full w-full text-center">
                 <motion.div
                   variants={{
-                    rest: { scale: 1, y: 0, color: "var(--icon-rest-color, theme('colors.slate.600'))" },
-                    hovered: { scale: 1.3, y: -5, color: "var(--icon-hover-color, hsl(var(--primary)))" },
+                    rest: { scale: 1, y: 0 },
+                    hovered: { scale: 1, y: -1},
                   }}
                   transition={{ duration: 0.3, ease: "circOut" }}
-                  className="mb-3 text-slate-600 dark:text-slate-300" // Removed group-hover as it's handled by variants
+                  className=" blur-[2px] text-primary/50 relative  " // Removed group-hover as it's handled by variants
                 >
-                  <IconComponent size={56} strokeWidth={1.5} />
+                  <IconComponent size={84} strokeWidth={1.5} />
                 </motion.div>
 
                 <motion.h3
-                  className="text-sm font-semibold text-slate-700 dark:text-slate-200 leading-tight"
+                  className=" absolute text-3xl font-bold leading-tight text-slate-800"
                   variants={{
                     rest: { scale: 1, y: 0, opacity: 0.8 },
-                    hovered: { scale: 1.1, y: 5, opacity: 1 },
+                    hovered: { scale: 1.01, y: -2, opacity: 1 },
                   }}
                   transition={{ duration: 0.3, ease: "circOut" }}
                 >

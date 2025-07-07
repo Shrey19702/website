@@ -7,6 +7,10 @@ import { motion } from "framer-motion"
 // import { motion } from "motion/react";
 import { Video, AudioLines, Image } from "lucide-react";
 import { InfiniteMovingCards } from "@/components/infinte_moving_cards";
+import { div } from "framer-motion/client";
+import ScalabilitySection from "@/components/animated_media/card_scalability"
+import FastDetection from "@/components/animated_media/fast_detection"
+import Support247 from "../animated_media/Support_247";
 
 export function FeaturesSectionDemo() {
     const features = [
@@ -16,57 +20,61 @@ export function FeaturesSectionDemo() {
                 "Upload any media file and receive an in-depth AI analysis in moments — complete with confidence scores and forensic insights.",
             skeleton: <SkeletonOne />,
             className:
-                "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
-        },
-        {
-            title: "Precision You Can Trust",
-            description:
-                "Our AI is trained on thousands of real and fake samples to deliver unmatched detection accuracy — no guesswork, just results.",
-            skeleton: <SkeletonTwo />,
-            className:
-                "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
+                "col-span-1 lg:col-span-4 border-b lg:border-r border-primary/20",
         },
         {
             title: "Lightning Fast Detection",
             description:
                 "No more waiting hours. Our cutting-edge system delivers verified results in just minutes, even for high-resolution files.",
-            skeleton: <SkeletonThree />,
+            skeleton: <FastDetection />,
             className:
-                "col-span-1 lg:col-span-3 lg:border-r dark:border-neutral-800",
+                "border-b col-span-1 lg:col-span-2 border-primary/20",
         },
         {
-            title: "Universal Media Format Support",
+            title: "Expert Support",
             description:
-                "Whether it's video, image, or audio — our AI can detect deepfakes across all major formats with seamless compatibility.",
-            skeleton: <SkeletonFour />,
+                "24/7 support for smooth and efficient operations",
+            skeleton: <Support247 />,
             className:
-                "col-span-1 lg:col-span-3 dark:border-neutral-800",
+                "col-span-1 lg:col-span-2 lg:border-r border-primary/20",
+        },
+        {
+            title: "Scalability and Performance",
+            description:
+                "Platform scales to meet growing demands, ensuring peak performance.",
+            skeleton: <ScalabilitySection />,
+            className:
+                "col-span-1 lg:col-span-4 ",
         }
     ];
 
     return (
-        <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto font-outfit">
-            <div className="px-8">
-                <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-semibold text-black dark:text-white">
-                    Packed with All the features you need
-                </h4>
+        <div className="  rounded-3xl">
 
-                <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-                    From Image checks to video checks, Every media form AI can generate has a check for it.
-                </p>
-            </div>
+            <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto font-outfit">
+                <div className="px-8">
+                    <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-semibold text-black dark:text-white">
+                        Packed with All the features you need
+                    </h4>
 
-            <div className="relative ">
-                <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800">
-                    {features.map((feature) => (
-                        <FeatureCard key={feature.title} className={feature.className}>
-                            <FeatureTitle>{feature.title}</FeatureTitle>
-                            <FeatureDescription>{feature.description}</FeatureDescription>
-                            <div className=" h-full w-full">{feature.skeleton}</div>
-                        </FeatureCard>
-                    ))}
+                    <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+                        From Image checks to video checks, Every media form AI can generate has a check for it.
+                    </p>
+                </div>
+
+                <div className="relative ">
+                    <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-3xl border-primary/20">
+                        {features.map((feature) => (
+                            <FeatureCard key={feature.title} className={feature.className}>
+                                <FeatureTitle>{feature.title}</FeatureTitle>
+                                <FeatureDescription>{feature.description}</FeatureDescription>
+                                <div className=" h-full w-full">{feature.skeleton}</div>
+                            </FeatureCard>
+                        ))}
+                    </div>
                 </div>
             </div>
+
         </div>
     );
 }
@@ -110,11 +118,11 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 export const SkeletonOne = () => {
     return (
         <div className="relative flex py-8 px-2 gap-10 h-[650px]">
-            <div className="w-full  p-5 bg-white dark:bg-neutral-900 shadow-2xl group h-full">
+            <div className="w-full rounded-xl  p-5 bg-white dark:bg-neutral-900 shadow-2xl group h-full">
                 <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
                     {/* TODO */}
                     <img
-                        src="/features_2/image.png"
+                        src="/features_2/report.png"
                         alt="header"
                         width={800}
                         height={500}
@@ -123,8 +131,8 @@ export const SkeletonOne = () => {
                 </div>
             </div>
 
-            <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />
-            <div className="absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none" />
+            {/* <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />
+            <div className="absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none" /> */}
         </div>
     );
 };
@@ -175,11 +183,11 @@ export const SkeletonTwo = () => {
                         variants={imageVariants}
                         key={"images-first" + idx}
                         style={{
-                            rotate: Math.random() * 20 - 10,
+                            rotate: 14 - 10,
                         }}
                         whileHover="whileHover"
                         whileTap="whileTap"
-                        className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
+                        className="rounded-xl -mr-4 mt-4 p-1 bg-white  dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
                     >
                         <img
                             src={image}
@@ -196,7 +204,7 @@ export const SkeletonTwo = () => {
                     <motion.div
                         key={"images-second" + idx}
                         style={{
-                            rotate: Math.random() * 20 - 10,
+                            rotate: 7 - 10,
                         }}
                         variants={imageVariants}
                         whileHover="whileHover"
@@ -214,8 +222,8 @@ export const SkeletonTwo = () => {
                 ))}
             </div>
 
-            <div className="absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent  h-full pointer-events-none" />
-            <div className="absolute right-0 z-[100] inset-y-0 w-20 bg-gradient-to-l from-white dark:from-black  to-transparent h-full pointer-events-none" />
+            {/* <div className="absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent  h-full pointer-events-none" />
+            <div className="absolute right-0 z-[100] inset-y-0 w-20 bg-gradient-to-l from-white dark:from-black  to-transparent h-full pointer-events-none" /> */}
         </div>
     );
 };
@@ -242,9 +250,9 @@ export const SkeletonFour = () => {
         { name: "webp", type: "Image" },
         { name: "jpeg", type: "Image" },
     ];
-    
+
     return (
-        <div className="h-[40rem] rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+        <div className=" rounded-md flex flex-col antialiased dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
             <InfiniteMovingCards
                 items={videoFormats as { name: string; type: string }[]}
                 direction="right"
