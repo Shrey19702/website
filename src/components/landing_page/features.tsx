@@ -49,7 +49,7 @@ export function FeaturesSectionDemo() {
     ];
 
     return (
-        <div className="  rounded-3xl">
+        <div className="  rounded-3xl bg-primary/5">
 
             <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto font-outfit">
                 <div className="px-8">

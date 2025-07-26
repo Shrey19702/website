@@ -2,6 +2,10 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import { ArrowRight, CheckCircle, Shield, AlertTriangle, Eye, Linkedin } from "lucide-react"
 import { useRef, useEffect, useState } from "react"
+import Multimodal_checks from "../animated_media/multimodal_checks"
+import Instant_results from "../animated_media/instant_results"
+import Explainability_n_locallization from "../animated_media/explainability_n_localization"
+import Verified_detailed_report from "../animated_media/verified_detailed_report"
 
 const How_It_Works = () => {
 
@@ -176,38 +180,37 @@ const How_It_Works = () => {
                             {/* 1 */}
                             <motion.div className="absolute inset-0 flex items-center justify-center" style={{ opacity: section1Opacity }}> {/* No Y transform, just fade */}
                                 <div className="relative rounded-3xl overflow-hidden shadow shadow-primary h-[70vh] aspect-[2/1]">
-                                    <div className="h-full w-full p-1 flex  ">
-                                        <div className="p-10 flex flex-col-reverse justify-between w-3/4  ">
+                                    <div className="h-full w-full p-1 flex ">
+                                        {/* INFO */}
+                                        <div className=" pl-8 pr-4 py-10  flex flex-col-reverse justify-between w-1/2 ">
                                             <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg ">
                                                 1
                                             </div>
                                             <div className="flex flex-col items-center gap-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="size-20">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
-                                                </svg>
-                                                <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 font-outfit w-full">Conduct Multi-Modal Checks</h3>
+                                                <h3 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 font-outfit w-full">Conduct Multi-Modal Checks</h3>
+                                                <div>
+                                                    Upload your content and let our AI conduct multi-modal checks.
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="bg-primary/30 p-10 rounded-3xl overflow-hidden">
-                                            <p className=" py-4 text-base">
-                                                Our system processes videos, audio, images, and text from any source or format. The advanced
-                                                ingestion pipeline handles multiple file types and can extract content from various platforms
-                                                including social media, news sites, and direct uploads.
-                                            </p>
-                                            <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-lg ">
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Support for all media formats</span>
-                                                </li>
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Real-time streaming capabilities</span>
-                                                </li>
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Batch processing for large datasets</span>
-                                                </li>
-                                            </ul>
+                                        {/* content */}
+                                        <div className="bg-primary text-white p-10 rounded-3xl w-full  overflow-hidden relative">
+                                            {/* Animated background */}
+                                            <div className="absolute inset-0 pointer-events-none">
+                                                <svg width="100%" height="100%" className="opacity-20">
+                                                    <defs>
+                                                        <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                                            <circle cx="3" cy="3" r="1.5" fill="white" />
+                                                        </pattern>
+                                                    </defs>
+                                                    <rect width="100%" height="100%" fill="url(#dots)" />
+                                                </svg>
+                                            </div>
+
+                                            <div className=" w-full h-full">
+                                                <Multimodal_checks />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -215,38 +218,37 @@ const How_It_Works = () => {
                             {/* 2 */}
                             <motion.div className="absolute inset-0 flex items-center justify-center" style={{ opacity: section2Opacity }}>
                                 <div className="relative rounded-3xl overflow-hidden shadow shadow-primary h-[70vh] aspect-[2/1]">
-                                    <div className="h-full w-full p-1 flex  ">
-                                        <div className="p-10 flex flex-col-reverse justify-between w-3/4  ">
+                                    <div className="h-full w-full p-1 flex ">
+                                        {/* INFO */}
+                                        <div className=" pl-8 pr-4 py-10  flex flex-col-reverse justify-between w-1/2 ">
                                             <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg ">
                                                 2
                                             </div>
                                             <div className="flex flex-col items-center gap-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="size-20">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
-                                                </svg>
-                                                <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 font-outfit w-full">Get Instant Results</h3>
+                                                <h3 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 font-outfit w-full">Get Instant Results</h3>
+                                                <div>
+                                                    Get instant results with detailed graphs, confidence scores, and analysis.
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="bg-primary/30 p-10 rounded-3xl overflow-hidden">
-                                            <p className=" py-4 text-base">
-                                                Our system processes videos, audio, images, and text from any source or format. The advanced
-                                                ingestion pipeline handles multiple file types and can extract content from various platforms
-                                                including social media, news sites, and direct uploads.
-                                            </p>
-                                            <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-lg ">
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Support for all media formats</span>
-                                                </li>
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Real-time streaming capabilities</span>
-                                                </li>
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Batch processing for large datasets</span>
-                                                </li>
-                                            </ul>
+                                        {/* content */}
+                                        <div className="bg-primary text-white p-10 rounded-3xl w-full  overflow-hidden relative">
+                                            {/* Animated background */}
+                                            <div className="absolute inset-0 pointer-events-none">
+                                                <svg width="100%" height="100%" className="opacity-20">
+                                                    <defs>
+                                                        <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                                            <circle cx="3" cy="3" r="1.5" fill="white" />
+                                                        </pattern>
+                                                    </defs>
+                                                    <rect width="100%" height="100%" fill="url(#dots)" />
+                                                </svg>
+                                            </div>
+
+                                            <div className=" w-full h-full">
+                                                <Instant_results />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -254,38 +256,37 @@ const How_It_Works = () => {
                             {/* 3 */}
                             <motion.div className="absolute inset-0 flex items-center justify-center" style={{ opacity: section3Opacity }}>
                                 <div className="relative rounded-3xl overflow-hidden shadow shadow-primary h-[70vh] aspect-[2/1]">
-                                    <div className="h-full w-full p-1 flex  ">
-                                        <div className="p-10 flex flex-col-reverse justify-between w-3/4  ">
+                                    <div className="h-full w-full p-1 flex ">
+                                        {/* INFO */}
+                                        <div className=" pl-8 pr-4 py-10  flex flex-col-reverse justify-between w-1/2 ">
                                             <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg ">
                                                 3
                                             </div>
                                             <div className="flex flex-col items-center gap-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="size-20">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
-                                                </svg>
-                                                <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 font-outfit w-full">Deep Explainability & Localization</h3>
+                                                <h3 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 font-outfit w-full">Deep Explainability & Localization</h3>
+                                                <div>
+                                                    Deep Learning Models with good results, explanations, and visualizations.
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="bg-primary/30 p-10 rounded-3xl overflow-hidden">
-                                            <p className=" py-4 text-base">
-                                                Our system processes videos, audio, images, and text from any source or format. The advanced
-                                                ingestion pipeline handles multiple file types and can extract content from various platforms
-                                                including social media, news sites, and direct uploads.
-                                            </p>
-                                            <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-lg ">
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Support for all media formats</span>
-                                                </li>
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Real-time streaming capabilities</span>
-                                                </li>
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Batch processing for large datasets</span>
-                                                </li>
-                                            </ul>
+                                        {/* content */}
+                                        <div className="bg-primary text-white p-10 rounded-3xl w-full  overflow-hidden relative">
+                                            {/* Animated background */}
+                                            <div className="absolute inset-0 pointer-events-none">
+                                                <svg width="100%" height="100%" className="opacity-20">
+                                                    <defs>
+                                                        <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                                            <circle cx="3" cy="3" r="1.5" fill="white" />
+                                                        </pattern>
+                                                    </defs>
+                                                    <rect width="100%" height="100%" fill="url(#dots)" />
+                                                </svg>
+                                            </div>
+
+                                            <div className=" w-full h-full">
+                                                <Explainability_n_locallization />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -293,38 +294,38 @@ const How_It_Works = () => {
                             {/* 4 */}
                             <motion.div className="absolute inset-0 flex items-center justify-center" style={{ opacity: section4Opacity }}>
                                 <div className="relative rounded-3xl overflow-hidden shadow shadow-primary h-[70vh] aspect-[2/1]">
-                                    <div className="h-full w-full p-1 flex  ">
-                                        <div className="p-10 flex flex-col-reverse justify-between w-3/4  ">
+                                    
+                                    <div className="h-full w-full p-1 flex ">
+                                        {/* INFO */}
+                                        <div className=" pl-8 pr-4 py-10  flex flex-col-reverse justify-between w-1/2 ">
                                             <div className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg ">
-                                                4   
+                                                4
                                             </div>
                                             <div className="flex flex-col items-center gap-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="size-20">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m0-3-3-3m0 0-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75" />
-                                                </svg>
-                                                <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 font-outfit w-full">Verified Detailed Reports</h3>
+                                                <h3 className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 font-outfit w-full">Verified Detailed Reports</h3>
+                                                <div>
+                                                    All The major report details with analysis and visualizations.
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="bg-primary/30 p-10 rounded-3xl overflow-hidden">
-                                            <p className=" py-4 text-base">
-                                                Our system processes videos, audio, images, and text from any source or format. The advanced
-                                                ingestion pipeline handles multiple file types and can extract content from various platforms
-                                                including social media, news sites, and direct uploads.
-                                            </p>
-                                            <ul className="mt-3 md:mt-4 space-y-1 md:space-y-2 text-lg ">
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Support for all media formats</span>
-                                                </li>
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Real-time streaming capabilities</span>
-                                                </li>
-                                                <li className="flex items-center gap-2 text-gray-700">
-                                                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                                                    <span>Batch processing for large datasets</span>
-                                                </li>
-                                            </ul>
+                                        {/* content */}
+                                        <div className="bg-primary text-white p-10 rounded-3xl w-full  overflow-hidden relative">
+                                            {/* Animated background */}
+                                            <div className="absolute inset-0 pointer-events-none">
+                                                <svg width="100%" height="100%" className="opacity-20">
+                                                    <defs>
+                                                        <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                                            <circle cx="3" cy="3" r="1.5" fill="white" />
+                                                        </pattern>
+                                                    </defs>
+                                                    <rect width="100%" height="100%" fill="url(#dots)" />
+                                                </svg>
+                                            </div>
+
+                                            <div className=" w-full h-full">
+                                                <Verified_detailed_report />
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

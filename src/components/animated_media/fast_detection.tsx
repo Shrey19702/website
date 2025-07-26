@@ -24,13 +24,13 @@ const FastDetection = () => {
                     <div className="z-0 overflow-hidden -top-16 font-bold text-lg w-20 -right-32 transition-all relative text-black">
                         Upload
                     </div>
-                    <div className="z-0 overflow-hidden -top-32 font-bold text-lg w-20 group-hover:w-0 group-hover:left-0 -left-20 transition-all relative text-black">
+                    <div className="z-0 text-gray-50 overflow-hidden -top-32 font-bold text-lg w-20 group-hover:w-0 group-hover:left-0 -left-20 transition-all relative ">
                         <FileVideoIcon className="size-10 p-2 rounded-full bg-cyan-400 " />
                     </div>
-                    <div className="z-0 overflow-hidden -top-28 font-bold text-lg w-20 group-hover:w-0 group-hover:left-0 -left-24 transition-all relative text-black">
+                    <div className="z-0 overflow-hidden -top-28 font-bold text-lg w-20 group-hover:w-0 group-hover:left-0 -left-24 transition-all relative text-gray-50 text-">
                         <FileVolume className="size-10 p-2 rounded-full bg-rose-400 " />
                     </div>
-                    <div className="z-0 overflow-hidden -top-[185px] font-bold text-lg w-20 group-hover:w-0 group-hover:left-0 -left-32 transition-all relative text-black">
+                    <div className="z-0 overflow-hidden -top-[185px] font-bold text-lg w-20 group-hover:w-0 group-hover:left-0 -left-32 transition-all relative text-gray-50 text-">
                         <FileImageIcon className="size-10 p-2 rounded-full bg-emerald-400 " />
                     </div>
                 </div>

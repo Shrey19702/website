@@ -40,7 +40,7 @@ const Support247 = () => {
                                     No problem! how can i assist you?
                                 </p>
                                 <p className=" max-h-0 group-hover:max-h-52 w-52 transition-all text-xs font-semibold text-slate-200">
-                                    2 mins ago
+                                    1 mins ago
                                 </p>
                             </div>
                             <div className=" font-extrabold text-xl flex gap-1 group-hover:opacity-0 group-hover:w-0 opacity-100 py-2 px-2 transition-all duration-300">
