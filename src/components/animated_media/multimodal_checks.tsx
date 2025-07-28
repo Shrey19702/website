@@ -120,7 +120,7 @@ const Multimodal_checks = () => {
                             className="p-3 rounded-full bg-amber-500 absolute"
                             style={{
                                 left: isHovering ? `${mousePos.x}px` : '10%',
-                                top: isHovering ? `${mousePos.y}px` : '30%',
+                                top: isHovering ? `${mousePos.y}px` : '15%',
                                 transform: 'translate(-50%, -50%)',
                             }}
                         >
@@ -151,7 +151,7 @@ const Multimodal_checks = () => {
                             :
                             (
                                 <div
-                                    className="bg-white/50 backdrop-blur-sm h-3/4 w-1/2 rounded-3xl border-4 border-dotted border-primary flex flex-col items-center justify-center cursor-pointer "
+                                    className="bg-white/50 backdrop-blur-sm h-1/2 md:h-3/4 w-3/4 md:w-1/2 rounded-3xl border-4 border-dotted border-primary flex flex-col items-center justify-center cursor-pointer "
                                     onMouseEnter={() => {
                                         if (selected_audio || selected_image || selected_video)
                                             set_uploaded(true);

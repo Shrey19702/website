@@ -175,7 +175,7 @@ const PendingQueueCard = () => (
 const ScalabilitySection = () => {
     return (
         <div className=" w-full h-full max-w-6xl relative ">
-            <div className="flex flex-wrap items-center justify-center py-16 gap-1 bg-gradient-to-r from-white via-transparent to-white backdrop-blur-xl z-10 relative">
+            <div className="flex flex-wrap items-center justify-center py-16 gap-1 bg-gradient-to-r backdrop-blur-xl z-10 relative">
                 {/* Large card taking up 2 columns on larger screens */}
                 <div className="flex flex-col ">
                     <ResolvedCasesCard />

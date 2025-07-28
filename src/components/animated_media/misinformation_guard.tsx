@@ -35,9 +35,9 @@ const MisinformationGuard: React.FC = () => {
                 const newTop = -(currentIndex * cardHeight);
                 media_card_scroller.current.style.top = `${newTop}px`;
             }
-            
+
             // This state is used by the ping animation logic
-            setCount(currentIndex); 
+            setCount(currentIndex);
 
             // Reset progress bar and loading state
             setIsLoading(true);
@@ -65,7 +65,7 @@ const MisinformationGuard: React.FC = () => {
 
         // Start the first cycle immediately
         animationCycle();
-        
+
         // Set the interval for all subsequent cycles
         const interval = setInterval(animationCycle, 3000);
 
@@ -78,13 +78,17 @@ const MisinformationGuard: React.FC = () => {
     }, []); // Empty dependency array ensures this runs only once on mount
 
     return (
-        <div className=' flex items-center h-full w-[630px] justify-center '>
+        <div className=' flex items-center h-full w-full md:w-[630px] justify-center '>
             {/* person card scroll animation */}
-            <div className='h-60 py-10 w-78 overflow-hidden flex justify-center '>
-                <div id='media-card-scroller' ref={media_card_scroller} className=' relative flex flex-col items-center gap-20 -top-[0px] transition-all duration-500 h-[880px]   '>
+            <div className='h-60 md:py-10 w-[140px] md:w-72 overflow-hidden flex justify-center '>
+                <div
+                    id='media-card-scroller'
+                    ref={media_card_scroller}
+                    className=' relative flex flex-col items-center gap-20 -top-[0px] transition-all duration-500 h-[880px] '
+                >
                     {/* Skeletons... */}
                     {[...Array(4)].map((_, i) => (
-                        <div key={i} className=' border px-4 py-3 w-72 h-40 bg-slate-300 rounded-3xl flex flex-col gap-3 '>
+                        <div key={i} className=' border px-4 py-3 w-32 md:w-72 h-40 bg-slate-300 rounded-3xl flex flex-col gap-3 '>
                             <div className='flex  '>
                                 <UserCircle className=' size-12 text-slate-500' />
                                 <div className='w-full flex flex-col gap-2 py-2 pl-3'>
@@ -103,7 +107,7 @@ const MisinformationGuard: React.FC = () => {
             </div>
 
             {/* Continuous progress bar animation */}
-            <div className='w-24 h-2 bg-slate-200 rounded-full overflow-hidden mx-4'>
+            <div className=' w-16 md:w-24 h-2 bg-slate-200 rounded-full overflow-hidden mx-4'>
                 <div
                     className='h-full bg-gradient-to-r from-green-400 via-sky-400 to-blue-500 rounded-full'
                     style={{
@@ -115,7 +119,7 @@ const MisinformationGuard: React.FC = () => {
 
             <div className='  gap-5  flex flex-col'>
                 {/* GREEN */}
-                <div className='flex items-center gap-8'>
+                <div className='flex flex-col  items-center gap-8'>
                     <div className=' relative h-20 w-20 bg-green-300 rounded-full'>
                         <div className=' z-10 absolute inset-0 flex items-center justify-center'>
                             <CheckCircle className='size-10' />
@@ -126,14 +130,14 @@ const MisinformationGuard: React.FC = () => {
                         <div className='text-2xl text-green-400 font-semibold'>
                             {green_count}
                         </div>
-                        <div className=' font-bold text-slate-600'>
+                        <div className=' text-xs md:text-base text-center font-bold text-slate-600'>
                             Safe Content
                         </div>
                     </div>
                 </div>
 
                 {/* RED */}
-                <div className='flex items-center gap-5'>
+                <div className='flex flex-col  items-center gap-5'>
                     <div className=' relative h-20 w-20 bg-red-300 rounded-full'>
                         <div className=' z-10 absolute inset-0 flex items-center justify-center'>
                             <AlertTriangle className='size-10' />
@@ -145,11 +149,12 @@ const MisinformationGuard: React.FC = () => {
                         <div className='text-2xl text-red-400 font-semibold'>
                             {red_count}
                         </div>
-                        <div className=' font-bold text-slate-600'>
+                        <div className=' text-xs md:text-base text-center font-bold text-slate-600'>
                             Flagged Content
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     );

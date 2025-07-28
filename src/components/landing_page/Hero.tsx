@@ -25,26 +25,26 @@ const Hero_Page = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
-                    className="relative z-10 pl-20 top-1/4 "
+                    className="relative z-10 pt-20 md:pt-0 pl-5 md:pl-20 top-1/4 "
                 >
-                    <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6 font-outfit leading-tight" >
+                    <h1 className="text-2xl lg:text-4xl font-bold mb-6 font-outfit leading-tight" >
                         Reimagining AI for online
-                        <ContainerTextFlip className="text-primary text-5xl mt-5 " words={words} animationDuration={2000} interval={5000} />
+                        <ContainerTextFlip className="text-primary text-3xl lg:text-5xl mt-5 " words={words} animationDuration={2000} interval={5000} />
                     </h1>
                     {/* <CrypticText
                       text="Safeguarding Digital Truth in an AI World"
                       className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-outfit leading-tight"
                       revealDuration={1.5}
                     /> */}
-                    <motion.div
-                        className="text-lg mb-8 text-gray-700 font-outfit max-w-xl"
+                    <motion.p
+                        className=" text-sm md:text-lg px-2 md:px-0 mb-8 text-gray-700 font-outfit max-w-xl"
                         initial={{ opacity: 0 }}
                         animate={isHeroInView ? { opacity: 1 } : {}}
                         transition={{ duration: 0.6, delay: 1.5 }}
                     >
                         Contrails AI provides cutting-edge solutions to detect manipulated media, misinformation, and harmful
                         content across digital platforms.
-                    </motion.div>
+                    </motion.p>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -58,31 +58,9 @@ const Hero_Page = () => {
                     initial={{ opacity: 0 }}
                     animate={isHeroInView ? { opacity: 1 } : {}}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className=" overflow-hidden w-[70vw] relative -left-20 h-[160vh]"
+                    className=" overflow-hidden md:w-[70vw] relative md:top-0 left-0 md:-left-20 h-[80vh] md:h-[160vh]"
                 >
                     <ContentGlobe />
-                    {/* <GlobeAnimation /> */}
-
-                    {/* Floating security indicators */}
-                    {/* <motion.div
-                        className="absolute top-10 right-10 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-[#0253E4]/20 flex items-center gap-2"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 2 }}
-                    >
-                        <CheckCircle className="h-5 w-5 text-green-500" />
-                        <span className="text-sm font-outfit">Deepfake detected</span>
-                    </motion.div>
-
-                    <motion.div
-                        className="absolute bottom-10 left-10 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-lg border border-[#0253E4]/20 flex items-center gap-2"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 2.3 }}
-                    >
-                        <AlertTriangle className="h-5 w-5 text-amber-500" />
-                        <span className="text-sm font-outfit">Misinformation alert</span>
-                    </motion.div> */}
                 </motion.div>
             </div>
         </section>

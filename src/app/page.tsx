@@ -13,7 +13,6 @@ import Footer from "@/components/landing_page/Footer"
 import { FeaturesSectionDemo } from "@/components/landing_page/features"
 
 export default function Home() {
-  // const [scrollY, setScrollY] = useState(0)
 
   // For the flowing line animation
   const lineRef = useRef<HTMLDivElement>(null)
@@ -108,7 +107,7 @@ export default function Home() {
 
       <FeaturesSectionDemo />
 
-      {/* How It Works Section - Improved Sticky Scroll */}
+      {/* How It Works Section - Sticky Scroll */}
       <How_It_Works />
 
       {/* Trusted By Section */}

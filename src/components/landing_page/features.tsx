@@ -2,10 +2,11 @@ import React from "react";
 import { cn } from "@/lib/utils";
 // import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 import { motion } from "framer-motion"
 // import { motion } from "motion/react";
-import { Video, AudioLines, Image } from "lucide-react";
+import { Video, AudioLines, ImageIcon } from "lucide-react";
 import { InfiniteMovingCards } from "@/components/infinte_moving_cards";
 import { div } from "framer-motion/client";
 import ScalabilitySection from "@/components/animated_media/card_scalability"
@@ -117,11 +118,10 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 
 export const SkeletonOne = () => {
     return (
-        <div className="relative flex py-8 px-2 gap-10 h-[650px]">
+        <div className="relative flex py-8 px-2 gap-10  md:h-[650px]">
             <div className="w-full rounded-xl  p-5 bg-white dark:bg-neutral-900 shadow-2xl group h-full">
                 <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
-                    {/* TODO */}
-                    <img
+                    <Image
                         src="/features_2/report.png"
                         alt="header"
                         width={800}
@@ -139,17 +139,11 @@ export const SkeletonOne = () => {
 
 export const SkeletonThree = () => {
     return (
-        <a
-            href="https://www.youtube.com/watch?v=RPa3_AD1_Vs"
-            target="__blank"
-            className="relative flex gap-10  h-full group/image"
-        >
-            <div className="w-full  mx-auto bg-transparent dark:bg-transparent group h-full">
-                <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
+        <div className="w-full  mx-auto bg-transparent dark:bg-transparent group h-full">
+            <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
 
-                </div>
             </div>
-        </a>
+        </div>
     );
 };
 

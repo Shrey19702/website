@@ -1,114 +1,126 @@
 import Image from "next/image";
+
 const Verified_detailed_report = () => {
+    const scores = [
+        {
+            title: "Frame Result",
+            result: "Fake",
+            score: "20.4%",
+            type: "fake"
+        },
+        {
+            title: "Audio Result",
+            result: "Real",
+            score: "94.4%",
+            type: "real"
+        },
+        {
+            title: "Image Result",
+            result: "Fake",
+            score: "10.5%",
+            type: "fake"
+        }
+    ];
+
+    const getScoreStyles = (type: string) => {
+        if (type === "fake") {
+            return {
+                bg: "bg-red-50",
+                text: "text-red-600",
+                scoreBg: "bg-red-200",
+                border: "border-red-600",
+                shadow: "shadow-red-600"
+            };
+        }
+        return {
+            bg: "bg-green-50",
+            text: "text-green-600",
+            scoreBg: "bg-green-200",
+            border: "border-green-600",
+            shadow: "shadow-green-600"
+        };
+    };
+
     return (
-        <>
-            <div className="flex flex-col flex-wrap w-full h-full justify-between items-center">
+        <div className="flex flex- flex-wrap w-full h-full justify-between gap-1 ">
 
-                <div className="  flex w-full justify-evenly">
+            {/* Scores Section */}
+            <div className=" md:max-h-36  px-4 md:px-5 py-2 rounded-3xl flex flex-col justify-between flex-1 md:flex-none">
+                <div className="text-base md:text-lg font-semibold pl-2 pb-1">
+                    Scores
+                </div>
 
-                    <div className=" bg-white/30 backdrop-blur px-5 py-4  rounded-3xl flex flex-col justify-between">
-                        <div className="text-lg font-semibold pl-2 pb-3">
-                            Scores
-                        </div>
-
-                        <div className="flex gap-2 flex-col flex-wrap items-center justify-center max-h-36">
-                            <div className="bg-red-50 text-black w-fit p-1 rounded-2xl px-3 shadow-red-600 shadow">
-                                <div className="w-full flex justify-between" >
-                                    <span className="min-w-32">
-                                        Frame Result
+                <div className=" md:max-h-32 flex flex-row md:flex-col flex-wrap gap-2 md:gap-3 items-center justify-center">
+                    {scores.map((score, index) => {
+                        const styles = getScoreStyles(score.type);
+                        return (
+                            <div key={index} className={`${styles.bg} text-black min-w-fit p-2 md:p-1 rounded-2xl px-3 ${styles.shadow} shadow flex-shrink-0`}>
+                                <div className="w-full flex flex-col md:flex-row justify-between gap-1">
+                                    <span className="text-xs md:text-sm font-medium md:min-w-32">
+                                        {score.title}
                                     </span>
-                                    <span className="w-full flex items-center justify-center text-red-600 font-bold ">
-                                        Fake
+                                    <span className={`flex items-center justify-center ${styles.text} font-bold text-xs md:text-sm`}>
+                                        {score.result}
                                     </span>
                                 </div>
-                                <div className="w-full flex justify-between" >
-                                    <span className="min-w-32 font-semibold">
+                                <div className="w-full flex flex-col md:flex-row justify-between gap-1 mt-1">
+                                    <span className="text-xs md:text-sm font-semibold md:min-w-32">
                                         Score
                                     </span>
-                                    <span className="w-full flex items-center justify-center text-red-600 font-bold ">
-                                        <span className="bg-red-200 px-4 rounded-full border-red-600 border">
-                                            20.4%
+                                    <span className={`flex items-center justify-center ${styles.text} font-bold`}>
+                                        <span className={`${styles.scoreBg} px-2 md:px-4 py-1 rounded-full ${styles.border} border text-xs md:text-sm`}>
+                                            {score.score}
                                         </span>
                                     </span>
                                 </div>
                             </div>
+                        );
+                    })}
+                </div>
+            </div>
 
-                            <div className="mt-5 bg-green-50 text-black w-fit p-1 rounded-2xl px-3 shadow-green-600 shadow">
-                                <div className="w-full flex justify-between" >
-                                    <span className="min-w-32">
-                                        Audio Result
-                                    </span>
-                                    <span className="w-full flex items-center justify-center text-green-600 font-bold ">
-                                        Real
-                                    </span>
-                                </div>
-                                <div className="w-full flex justify-between" >
-                                    <span className="min-w-32 font-semibold">
-                                        Score
-                                    </span>
-                                    <span className="w-full flex items-center justify-center text-green-600 font-bold ">
-                                        <span className="bg-green-200 px-4 rounded-full border-green-600 border">
-                                            94.4%
-                                        </span>
-                                    </span>
-                                </div>
-                            </div>
+            {/* Top Section - Scores and BBox */}
+            <div className="flex flex-col md:flex-row w-full justify-between gap-1 md:gap-6">
 
-                            <div className="bg-red-50 h-full text-black rounded-2xl px-3 py-2 shadow-red-600 shadow">
-                                <div className="flex flex-col justify-between" >
-                                    <span className="min-w-20 text-center">
-                                        Image Result
-                                    </span>
-                                    <span className=" flex items-center justify-center text-red-600 font-bold ">
-                                        Fake
-                                    </span>
-                                </div>
-                                <div className=" flex flex-col items-center mt-2" >
-                                    <span className="min-w-10 font-semibold">
-                                        Score
-                                    </span>
-                                    <span className="w-full flex items-center justify-center text-red-600 font-bold ">
-                                        <span className="bg-red-200 px-4 rounded-full border-red-600 border">
-                                            10.5%
-                                        </span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                {/* BBox Detection Section */}
+                <div className=" relative rounded-3xl px-4 md:px-5 py-2 flex flex-col flex-1 md:flex-none">
+                    <div className="text-base md:text-lg font-semibold pl-2 pb-1">
+                        Bbox Detections
                     </div>
-
-                    <div className=" bg-white/30 backdrop-blur rounded-3xl px-5 py-4">
-                        <div className="text-lg font-semibold pl-2 ">
-                            bbox detections
-                        </div>
-                        <div className=" flex items-center justify-center h-full w-40 overflow-hidden ">
+                    <div className="flex items-center justify-center flex-1 overflow-hidden">
+                        <div className="relative w-full max-w-[200px] md:w-40 aspect-[4/3]">
                             <Image
-                                className="rounded-xl"
+                                className="rounded-xl object-cover"
                                 src="/features_2/bbox.png"
-                                alt="Graph"
-                                width={530}
-                                height={400}
+                                alt="Bounding box detections"
+                                fill
+                                sizes="(max-width: 768px) 200px, 160px"
                             />
                         </div>
                     </div>
                 </div>
-                <div className=" h-[49%]  w-[90%] bg-white/30 backdrop-blur rounded-3xl px-5 flex flex-col items-center justify-evenly">
-                    <div className="text-lg font-semibold pl-2 w-full ">
-                        Graphs
+
+                {/* Bottom Section - Graphs */}
+                <div className="flex-1 min-h-36 w-full rounded-3xl px-4 md:px-5 py-1 flex flex-col">
+                    <div className="text-base md:text-lg font-semibold pl-2 pb-1">
+                        Analysis Graphs
                     </div>
-                    <div className="">
-                        <Image
-                            className="rounded-xl"
-                            src="/features_2/graph.png"
-                            alt="Graph"
-                            width={500}
-                            height={300}
-                        />
+                    <div className="flex-1 flex items-center justify-center overflow-hidden">
+                        <div className="relative w-full h-full rounded-3xl">
+                            <Image
+                                className=" object-contain"
+                                src="/features_2/graph.png"
+                                alt="Analysis graphs"
+                                width={500}
+                                height={500}
+                                sizes="(max-width: 768px) 90vw, 500px"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
 
 export default Verified_detailed_report;

@@ -56,7 +56,7 @@ const FastDetection = () => {
                 </div>
 
 
-                <div className=" top-[75%] left-40 group-hover:left-64 transition-all absolute rounded-e-3xl rounded-t-3xl bg-green-400 text-white font-bold text-2xl p-3">
+                <div className=" top-[75%] left-36 group-hover:left-[270px] md:group-hover:left-64 transition-all absolute rounded-e-3xl rounded-t-3xl bg-green-400 text-white font-bold text-2xl p-3">
                     <div className="z-10 relative">
                         Done
                     </div>

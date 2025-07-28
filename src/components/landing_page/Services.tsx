@@ -102,7 +102,7 @@ const TrustSafetySection: React.FC = () => {
     };
 
     return (
-        <section className="px-6 lg:px-20 py-24 bg-gradient-to-b from-primary/5 via-primary/10 via-60% to-white font-outfit relative">
+        <section className="px-6 lg:px-20 py-0 lg:py-24 bg-gradient-to-b from-primary/5 via-primary/10 via-60% to-white font-outfit relative">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -111,10 +111,10 @@ const TrustSafetySection: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
+                    <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
                         AI Safety at Enterprise Scale
                     </h2>
-                    <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+                    <p className=" text-lg lg:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
                         Deploy comprehensive AI-powered protection across all your digital platforms.
                         Detect threats in real-time, prevent harmful content, and maintain trust at scale.
                     </p>
@@ -144,12 +144,12 @@ const TrustSafetySection: React.FC = () => {
                                     style={{ width: `${progress}%` }} />
                             )}
 
-                            <div className="flex items-center gap-4 z-10 relative">
+                            <div className="flex flex-col md:flex-row items-center gap-4 z-10 relative">
                                 <div className={`p-3 rounded-xl bg-gradient-to-r ${service.color} text-white`}>
                                     {service.icon}
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-slate-900 text-lg mb-1">
+                                    <h3 className="font-semibold break-words text-slate-900 text-center text-sm md:text-lg mb-1">
                                         {service.title}
                                     </h3>
                                     {/* <p className="text-sm text-slate-500 font-medium">
@@ -162,7 +162,7 @@ const TrustSafetySection: React.FC = () => {
                 </motion.div>
 
                 {/* Main Content */}
-                <div className="bg-white rounded-3xl overflow-hidden">
+                <div className="bg-white rounded-3xl mb-10 border overflow-hidden">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeCard}
@@ -170,26 +170,26 @@ const TrustSafetySection: React.FC = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
-                            className="grid lg:grid-cols-2 gap-0 min-h-[600px]"
+                            className="flex flex-col md:flex-row w-full gap-0 md:min-h-[600px]"
                         >
                             {/* Content Side */}
-                            <div className="flex flex-col justify-center p-12 lg:p-16">
+                            <div className=" w-full flex flex-col justify-center p-4 lg:py-16 lg:pl-12 max-w-[90vw] md:max-w-fit">
                                 <motion.div
                                     initial={{ opacity: 0, x: -30 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.2, duration: 0.5 }}
                                 >
-                                    <div className="mb-8">
+                                    <div className="mb-8 mt-2">
                                         {/* <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r ${services[activeCard].color} text-white text-sm font-semibold mb-6`}>
                                             {services[activeCard].icon}
                                             {services[activeCard].subtitle}
                                         </div> */}
-                                        <h3 className="text-3xl lg:text-4xl font-semibold text-slate-900  leading-tight">
+                                        <h3 className="text-3xl text-center md:text-4xl font-semibold text-slate-900  leading-tight">
                                             {services[activeCard].title}
                                         </h3>
                                     </div>
 
-                                    <p className="text-slate-600 leading-relaxed text-lg lg:text-xl text-pretty max-w-96 ">
+                                    <p className="text-slate-600 text-center leading-relaxed text-lg md:text-xl text-pretty lg:max-w-96 ">
                                         {services[activeCard].description}
                                     </p>
 
@@ -197,12 +197,12 @@ const TrustSafetySection: React.FC = () => {
                             </div>
 
                             {/* Visual Side - Clean GIF Display */}
-                            <div className="flex items-center justify-center p-12  ">
+                            <div className=" py-10 px-5 flex items-center justify-center ">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.3, duration: 0.6 }}
-                                    className="w-full h-full relative -left-20"
+                                    className="w-full h-full relative"
                                 >
                                     {services[activeCard].media_component ?
                                         services[activeCard].media_component :
