@@ -81,7 +81,7 @@ const How_It_Works = () => {
                                 >
                                     <div className="w-full h-full">
                                         {/* Mobile Layout (flex-col) */}
-                                        <div className="flex flex-col md:hidden relative border border-primary -top-20 h-[85%] bg-white rounded-3xl shadow-lg shadow-primary/40 overflow-hidden">
+                                        <div className="flex flex-col md:hidden relative border border-primary h-[85%] bg-white rounded-3xl shadow-lg shadow-primary/40 overflow-hidden">
                                             {/* Mobile Info Section */}
                                             <div className="p-6 flex items-center justify-between bg-gray-50">
                                                 <div className="flex items-center gap-4">

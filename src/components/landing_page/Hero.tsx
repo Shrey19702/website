@@ -60,6 +60,7 @@ const Hero_Page = () => {
                     transition={{ duration: 1, delay: 0.5 }}
                     className=" overflow-hidden md:w-[70vw] relative md:top-0 left-0 md:-left-20 h-[80vh] md:h-[160vh]"
                 >
+                    <div className="absolute md:hidden top-32 z-20 h-full w-full" />
                     <ContentGlobe />
                 </motion.div>
             </div>
